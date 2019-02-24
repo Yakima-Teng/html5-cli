@@ -1,6 +1,6 @@
 {
   "name": "html5-cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Rapidly create an h5 boilerplate with everything out of the box.",
   "main": "README.md",
   "directories": {
