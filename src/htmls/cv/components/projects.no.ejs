@@ -1,0 +1,38 @@
+<section class="site-section">
+    <header class="site-section-header"><%= title %></header>
+    <article class="site-section-content">
+        <ul class="project-box">
+            <% details.forEach((item) => { %>
+                <% if (item.type !== 'image') { %>
+                    <li class="item">
+                        <header class="project-header"><%= item.title %></header>
+
+                        <article class="project-content">
+                            <% item.description.forEach((paragraph) => { %>
+                                <p class="paragraph"><%- paragraph %></p>
+                            <% }); %>
+                        </article>
+                    </li>
+                <% } else { %>
+                    <li class="item">
+                        <header class="project-header"><%= item.title %></header>
+
+                        <article class="project-content">
+                            <% item.description.forEach((d) => { %>
+                                <section class="item-image">
+                                    <img src="<%= d.image %>" alt="" class="img-left">
+                                    <article class="item-right">
+                                        <p class="item-title"><%= d.title %></p>
+                                        <% d.description.forEach((paragraph) => { %>
+                                            <p class="paragraph"><%- paragraph %></p>
+                                        <% }); %>
+                                    </article>
+                                </section>
+                            <% }); %>
+                        </article>
+                    </li>
+                <% } %>
+            <% }); %>
+        </ul>
+    </article>
+</section>

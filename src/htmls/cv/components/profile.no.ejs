@@ -1,0 +1,10 @@
+<section class="site-section">
+    <header class="site-section-header"><%= title %></header>
+    <article class="site-section-content">
+        <ul class="profile-box">
+            <% details.forEach((item) => { %>
+                <li class="item <%= item.widthPercentage %>"><%- item.text %></li>
+            <% }); %>
+        </ul>
+    </article>
+</section>

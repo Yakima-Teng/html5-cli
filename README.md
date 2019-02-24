@@ -8,7 +8,7 @@ Here the html5-cli is mean to create `HTML5 projects`, which have the following 
 
 * Usually need to be created in a hurry.
 
-* Short-term (will be offline soon after being online).
+* Short-term (will be offline soon after being online, i.e., you do not need to maintain them).
 
 * Usually have a nice look when compared to those long-term projects.
 
@@ -16,17 +16,19 @@ Here the html5-cli is mean to create `HTML5 projects`, which have the following 
 
 Do you remember those projects you created for some holidays? Do you remember those projects you created to draw people's attention to your core products? Haha, I quite mean those projects here.
 
-## What you need html5-cli
+## Why you need html5-cli
 
 Do you find the following features very necessary?
 
-* use an html template engine.
+* use an html template engine (such as `EJS`).
 
 * write ES6/7/8 javascript code.
 
 * write sass/less together instead of direct css.
 
 * compress .html, .js, .css files for production purpose.
+
+* proxy requests to fix cross-domain problem in local development.
 
 Do you find the following functions very common?
 
@@ -42,9 +44,24 @@ Do you find the following functions very common?
 
 * operate dom nodes.
 
-If so, you can give html5-cli a try, you will like it.
+If your answers are yes, you can give html5-cli a try, and you will like it.
 
 ## Usage
+
+Firstly, you will need to install `html5-cli` globally:
+
+```bash
+npm install -g html5-cli
+```
+
+Then, you will be able to use `h5` command in your command line tools. Try the following command to create an `HTML5 project`:
+
+```bash
+# replace <project-name> with your target name
+h5 init <project-name>
+```
+
+Now you have successfully created the project. You can now go to the project root (`cd <project-name>`), and use the following commands to do your job:
 
 * `npm run start`: Develop locally.
 

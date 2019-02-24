@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%- include('../components/site-head.no.ejs', cv.seo.en) %>
+    <link rel="stylesheet" href="./css/app.css">
+</head>
+<body>
+<div class="site-wrapper">
+    <%- include('./components/site-header.no.ejs', cv.pageHeader.en) %>
+    <article class="site-content">
+        <%- include('./components/profile.no.ejs', cv.profile.en) %>
+        <%- include('./components/skills.no.ejs', cv.skills.en) %>
+        <%- include('./components/projects.no.ejs', cv.projects.en) %>
+        <%- include('./components/jobs.no.ejs', cv.jobs.en) %>
+    </article>
+</div>
+</body>
+</html>
