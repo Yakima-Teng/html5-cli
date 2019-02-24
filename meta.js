@@ -6,11 +6,11 @@ module.exports = {
     }
   },
   filters: {
-    'bin': 'false',
-    'bin-lib': 'false',
+    'bin/*': 'false',
+    'bin-lib/*': 'false',
     'build': 'true',
     'lib': 'true',
-    'src/**/*': 'shouldKeepExampleFiles',
+    'src/*': 'shouldKeepExampleFiles',
     '.browserslistrc': 'true',
     '.gitignore': 'true',
     'LICENSE': 'false',
@@ -21,6 +21,7 @@ module.exports = {
     'site.data.config.js': 'shouldKeepExampleFiles',
     'site.proxy.config.js': 'true'
   },
+  skipInterpolation: 'src/**/*.bmp',
   complete (data, { chalk }) {
     console.log(chalk.green('success'))
   }

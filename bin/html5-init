@@ -13,7 +13,6 @@ const generate = require('../bin-lib/generate')
 const checkVersion = require('../bin-lib/check-version')
 // const localPath = require('../bin-lib/local-path')
 const log = console.log
-const clone = program.clone || false
 
 /**
  * help
@@ -67,6 +66,8 @@ function run (shouldKeepExampleFiles) {
 
 const templatePath = path.join(home, '.html5-templates/html5-cli')
 const projectName = program.args[0]
+const clone = program.clone || false
+const to = path.resolve(projectName || '.')
 
 function downloadAndGenerate (template, cb) {
   const spinner = ora('downloading template')
