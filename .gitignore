@@ -63,3 +63,4 @@ typings/
 .idea
 build/deploy.js
 dist
+.DS_Store

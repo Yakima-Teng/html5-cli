@@ -1,0 +1,84 @@
+#!/usr/bin/env node
+
+const download = require('download-git-repo')
+const program = require('commander')
+const path = require('path')
+const ora = require('ora')
+const home = require('user-home')
+const chalk = require('chalk')
+// const inquirer = require('inquirer')
+// const rm = require('rimraf').sync
+const logger = require('../bin-lib/logger')
+const generate = require('../bin-lib/generate')
+const checkVersion = require('../bin-lib/check-version')
+// const localPath = require('../bin-lib/local-path')
+const log = console.log
+const clone = program.clone || false
+
+/**
+ * help
+ */
+program.on('--help', () => {
+  log('  Examples:')
+  log()
+  log(chalk.gray('    # create an html5 project with the official template'))
+  log('    $ html5 init project-name')
+  log()
+})
+
+/**
+ * help
+ */
+function help () {
+  program.parse(process.argv)
+  if (program.args.length < 1) {
+    return program.help()
+  }
+}
+help()
+
+
+log()
+process.on('exit', () => {
+  log()
+})
+
+// inquirer.prompt([
+//   {
+//     type: 'confirm',
+//     message: 'Need keep example files?',
+//     name: 'shouldKeepExampleFiles'
+//   }
+// ]).then(answers => {
+//   run(answers.shouldKeepExampleFiles)
+// }).catch(logger.fatal)
+run()
+
+function run (shouldKeepExampleFiles) {
+  checkVersion(() => {
+    const officialTemplate = 'Yakima-Teng/html5-cli'
+    downloadAndGenerate(officialTemplate, () => {
+      if (!shouldKeepExampleFiles) {
+        console.log(`__dirname: ${__dirname}`)
+      }
+    })
+  })
+}
+
+const templatePath = path.join(home, '.html5-templates/html5-cli')
+const projectName = program.args[0]
+
+function downloadAndGenerate (template, cb) {
+  const spinner = ora('downloading template')
+  spinner.start()
+  download(template, templatePath, { clone }, err => {
+    spinner.stop()
+    err && logger.fatal('Failed to download repo ' + template + ': ' + err.message.trim())
+    generate(projectName, templatePath, to, err => {
+      err && logger.fatal(err)
+      log()
+      cb && cb()
+      logger.success('Generated "%s"', projectName)
+    })
+  })
+}
