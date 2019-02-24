@@ -6,11 +6,11 @@ module.exports = {
     }
   },
   filters: {
-    'bin/*': 'false',
-    'bin-lib/*': 'false',
-    'build': 'true',
-    'lib': 'true',
-    'src/*': 'shouldKeepExampleFiles',
+    'bin/**/*': 'false',
+    'bin-lib/**/*': 'false',
+    'build/**/*': 'true',
+    'lib/**/*': 'true',
+    'src/**/*': 'shouldKeepExampleFiles',
     '.browserslistrc': 'true',
     '.gitignore': 'true',
     'LICENSE': 'false',
