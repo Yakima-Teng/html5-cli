@@ -61,4 +61,6 @@ typings/
 .next
 
 .idea
+build/deploy.js
+dist
 .DS_Store
