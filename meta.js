@@ -48,7 +48,7 @@ module.exports = {
   },
   skipInterpolation: 'src/**/*.bmp',
   complete (data, { chalk, logger, files, fs }) {
-    if (data.shouldKeepExampleFiles === true) {
+    if (data.shouldKeepExampleFiles === false) {
       const distDirName = data.distDirName
       const inPLace = data.inPlace
       if (inPLace === true) {
