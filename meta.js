@@ -49,9 +49,7 @@ module.exports = {
   skipInterpolation: 'src/**/*.bmp',
   complete (data, { chalk, logger, files, fs }) {
     if (data.shouldKeepExampleFiles === false) {
-      console.log(`data: ${JSON.stringify(data, null, 2)}`)
-      const distDirName = data.distDirName
-      console.log(`distDirName: ${distDirName}`)
+      const destDirName = data.destDirName
       const inPLace = data.inPlace
       if (inPLace === true) {
         fs.mkdirSync('src')
@@ -59,10 +57,10 @@ module.exports = {
         fs.writeFileSync('src/app.scss', fileContentForAppScss)
         fs.writeFileSync('src/app.js', fileContentForAppJS)
       } else {
-        fs.mkdirSync(`${distDirName}/src`)
-        fs.writeFileSync(`${distDirName}/src/index.ejs`, fileContentForIndexEJS)
-        fs.writeFileSync(`${distDirName}/src/app.scss`, fileContentForAppScss)
-        fs.writeFileSync(`${distDirName}/src/app.js`, fileContentForAppJS)
+        fs.mkdirSync(`${destDirName}/src`)
+        fs.writeFileSync(`${destDirName}/src/index.ejs`, fileContentForIndexEJS)
+        fs.writeFileSync(`${destDirName}/src/app.scss`, fileContentForAppScss)
+        fs.writeFileSync(`${destDirName}/src/app.js`, fileContentForAppJS)
       }
     }
   }
