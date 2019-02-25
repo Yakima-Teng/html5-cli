@@ -49,7 +49,9 @@ module.exports = {
   skipInterpolation: 'src/**/*.bmp',
   complete (data, { chalk, logger, files, fs }) {
     if (data.shouldKeepExampleFiles === false) {
+      console.log(`data: ${JSON.stringify(data, null, 2)}`)
       const distDirName = data.distDirName
+      console.log(`distDirName: ${distDirName}`)
       const inPLace = data.inPlace
       if (inPLace === true) {
         fs.mkdirSync('src')
