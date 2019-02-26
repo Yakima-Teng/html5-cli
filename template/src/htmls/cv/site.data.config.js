@@ -197,7 +197,7 @@ module.exports = {
     cn: {
       title: '工作经验',
       details: [
-        '高级前端开发工程师@好买财富管理股份有限公司（上市公司，腾讯系基金销售公司）| 2018年9月至今',
+        '高级前端开发工程师 @ 好买财富管理股份有限公司（上市公司，腾讯系基金销售公司）| 2018年9月至今',
         '前端开发工程师 @ 北京无线天利有限公司上海分公司（上市公司）| 2015.12 – 2018.08',
         '国际药品注册专员 @ 浙江普洛康裕制药有限公司（上市公司）| 2013.10 – 2015.07',
         '符合以下条件的公司未列入：与前端无关且任职时间小于3个月的、或与前端有关但任职时间小于1个月的'
@@ -206,7 +206,7 @@ module.exports = {
     en: {
       title: 'Work Experience',
       details: [
-        'Senior frontend developer @ 好买财务管理有限公司(public company) | 2018.09-now',
+        'Senior frontend developer @ 好买财富管理股份有限公司(public company) | 2018.09-now',
         'Intermediate frontend developer @ 北京无线天利有限公司上海分公司(public company) | 2015.12 - 2018.08',
         'International regular affair person @ Zhejiang Apeloa Kangyu Pharmaceutical Co., Ltd. (public company) | 2013.10 - 2015.07',
         'Note: frontend-related company stayed less than 1 month, and frontend-unrelated company stayed less than 3 months are not listed'
