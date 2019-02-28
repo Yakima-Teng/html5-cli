@@ -1,20 +1,26 @@
 const gulp = require('gulp');
-const babel = require('gulp-babel');
-const gulpif = require('gulp-if');
-const uglify = require('gulp-uglify');
 const log = require('fancy-log');
+const webpackStream = require('webpack-stream');
+const webpackCompiler = require('webpack');
+const named = require('vinyl-named');
 
 const { join, isProduction, browserSync } = require('../utils');
 
 module.exports = () => {
   return gulp.src([
-    join('/src/js/**/*.js'),
-    '!' + join('/src/js/**/*.no.js')
+    join('/src/**/*.js'),
+    '!' + join('/src/**/*.no.js')
   ])
-    .pipe(babel({
-      presets: ['@babel/env']
-    })).on('error', log)
-    .pipe(gulpif(isProduction, uglify()))
-    .pipe(gulp.dest(join('/dist/js')))
+    .pipe(named((file) => {
+      return file.history[0].split('template/src/')[1].replace(/\.js$/, '')
+    }))
+    .pipe(webpackStream({
+      mode: isProduction ? 'production' : 'development'
+    }), webpackCompiler, (err, stats) => {
+      if (err) {
+        log(err)
+      }
+    })
+    .pipe(gulp.dest(join('/dist')))
     .pipe(browserSync.stream())
 };

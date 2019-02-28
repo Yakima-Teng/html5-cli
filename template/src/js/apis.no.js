@@ -1,5 +1,5 @@
-import {transferParamsToQueryString} from './utils'
-import {timeout} from './promise'
+import {transferParamsToQueryString} from './utils.no'
+import {timeout} from './promise.no'
 
 async function doAjax (method = '', url = '', params = {}, options = {}, config = {
   handleErrorAutomatically: true,

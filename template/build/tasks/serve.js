@@ -17,7 +17,7 @@ module.exports = () => {
           }
         },
         port,
-        startPath: '/htmls/cv/index_en.html',
+        startPath: '/htmls/cards/index.html',
         middleware: Object.keys(proxyConfig).map((key) => proxy(key, proxyConfig[key]))
       })
     })
