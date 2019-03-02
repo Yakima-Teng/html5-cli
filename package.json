@@ -5,7 +5,9 @@
   "main": "README.md",
   "bin": {
     "html5": "bin/html5",
-    "html5-init": "bin/html5-init"
+    "html5-init": "bin/html5-init",
+    "h5": "bin/html5",
+    "h5-init": "bin/html5-init"
   },
   "dependencies": {
     "async": "^2.6.2",
