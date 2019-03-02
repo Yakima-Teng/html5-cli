@@ -1,8 +1,12 @@
 {
   "name": "html5-cli",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Rapidly create an HTML5 boilerplate with everything out of the box.",
   "main": "README.md",
+  "bin": {
+    "html5": "bin/html5",
+    "html5-init": "bin/html5-init"
+  },
   "dependencies": {
     "async": "^2.6.2",
     "chalk": "^2.4.2",
