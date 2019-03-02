@@ -9,10 +9,11 @@ const { join, isProduction, browserSync } = require('../utils');
 module.exports = () => {
   return gulp.src([
     join('/src/**/*.js'),
-    '!' + join('/src/**/*.no.js')
+    '!' + join('/src/**/*.no.js'),
+    '!' + join('/src/**/site.data.config.js')
   ])
     .pipe(named((file) => {
-      return file.history[0].split('template/src/')[1].replace(/\.js$/, '')
+      return file.history[0].split('src/')[1].replace(/\.js$/, '')
     }))
     .pipe(webpackStream({
       mode: isProduction ? 'production' : 'development'
