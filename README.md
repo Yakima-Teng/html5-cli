@@ -54,10 +54,13 @@ Firstly, you will need to install `html5-cli` globally:
 npm install -g html5-cli
 ```
 
-Then, you will be able to use `h5` command in your command line tools. Try the following command to create an `HTML5 project`:
+Then, you will be able to use `html5` (or `h5` as an alias) command in your command line tools. Try the following command to create an `HTML5 project`:
 
 ```bash
 # replace <project-name> with your target name
+html5 init <project-name>
+
+# or use h5 alias
 h5 init <project-name>
 ```
 
