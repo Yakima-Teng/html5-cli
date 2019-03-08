@@ -14,7 +14,7 @@ module.exports = () => {
     }
   })
   try {
-    const renderData = require('../../site.data.config')
+    const renderData = require('../../src/site.data.config')
     return gulp.src([join('/src/**/*.ejs'), '!' + join('/src/**/*.no.ejs')])
       .pipe(ejs(renderData, {}, { ext: '.html' })).on('error', log)
       .pipe(gulpif(isProduction, htmlmin({ collapseWhitespace: true })))

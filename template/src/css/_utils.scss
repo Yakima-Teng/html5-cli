@@ -1,11 +1,4 @@
-@import './constants';
-@import './border-one-px';
-
-@mixin customWidth() {
-  width: $site-width;
-  max-width: $site-width_max;
-  min-width: $site-width_min;
-}
+$border-color: #eee9dc;
 
 @mixin clearfix($position: relative) {
   position: $position;
@@ -30,11 +23,127 @@
   vertical-align: $align;
 }
 
-@mixin textAlign($align: center) {
-  text-align: $align;
-}
-
 @mixin cursor() {
   user-select: none;
   cursor: pointer;
+}
+
+@mixin border($borderColor: $border-color) {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 200%;
+  border: 1px solid $borderColor;
+  color: $borderColor;
+  height: 200%;
+  transform-origin: left top;
+  transform: scale(0.5);
+}
+
+@mixin setTopLine($borderColor: $border-color) {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 1px;
+  border-top: 1px solid $borderColor;
+  color: $borderColor;
+  transform-origin: 0 0;
+  transform: scaleY(0.5);
+}
+
+@mixin setBottomLine($borderColor: $border-color) {
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 1px;
+  border-bottom: 1px solid $borderColor;
+  color: $borderColor;
+  transform-origin: 0 100%;
+  transform: scaleY(0.5);
+}
+
+@mixin setLeftLine($borderColor: $border-color) {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  bottom: 0;
+  border-left: 1px solid $borderColor;
+  color: $borderColor;
+  transform-origin: 0 0;
+  transform: scaleX(0.5);
+}
+
+@mixin setRightLine($borderColor: $border-color) {
+  content: " ";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 1px;
+  bottom: 0;
+  border-right: 1px solid $borderColor;
+  color: $borderColor;
+  transform-origin: 100% 0;
+  transform: scaleX(0.5);
+}
+
+@mixin borderAround($borderColor: $border-color) {
+  position: relative;
+  &:before {
+    @include border($borderColor);
+  }
+}
+
+@mixin borderTop($borderColor: $border-color) {
+  position: relative;
+  &:before {
+    @include setTopLine($borderColor);
+  }
+}
+
+@mixin borderBottom($borderColor: $border-color) {
+  position: relative;
+  &:after {
+    @include setBottomLine($borderColor);
+  }
+}
+
+@mixin borderHorizontal($borderColor: $border-color) {
+  position: relative;
+  &:before {
+    @include setTopLine($borderColor);
+  }
+  &:after {
+    @include setBottomLine($borderColor);
+  }
+}
+
+@mixin borderLeft($borderColor: $border-color) {
+  position: relative;
+  &:before {
+    @include setLeftLine($borderColor);
+  }
+}
+
+@mixin borderRight($borderColor: $border-color) {
+  position: relative;
+  &:after {
+    @include setRightLine($borderColor);
+  }
+}
+
+@mixin borderVertical($borderColor: $border-color) {
+  position: relative;
+  &:before {
+    @include setLeftLine($borderColor);
+  }
+  &:after {
+    @include setRightLine($borderColor);
+  }
 }

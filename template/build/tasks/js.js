@@ -8,20 +8,20 @@ const { join, isProduction, browserSync } = require('../utils');
 
 module.exports = () => {
   return gulp.src([
-    join('/src/**/*.js'),
-    '!' + join('/src/**/*.no.js'),
-    '!' + join('/src/**/site.data.config.js')
+    join('/src/js/**/*.js'),
+    '!' + join('/src/js/**/*.no.js')
   ])
-    .pipe(named((file) => {
-      return file.history[0].split('src/')[1].replace(/\.js$/, '')
-    }))
-    .pipe(webpackStream({
-      mode: isProduction ? 'production' : 'development'
-    }), webpackCompiler, (err, stats) => {
-      if (err) {
-        log(err)
-      }
-    })
-    .pipe(gulp.dest(join('/dist')))
-    .pipe(browserSync.stream())
+      .pipe(named((file) => {
+        console.log(file.history[0])
+        return file.history[0].split('src/js/')[1].replace(/\.js$/, '')
+      }))
+      .pipe(webpackStream({
+        mode: isProduction ? 'production' : 'development'
+      }), webpackCompiler, (err, stats) => {
+        if (err) {
+          log(err)
+        }
+      })
+      .pipe(gulp.dest(join('/dist/js')))
+      .pipe(browserSync.stream())
 };

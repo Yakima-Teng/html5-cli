@@ -9,12 +9,12 @@ const { browserSync, join, isProduction } = require('../utils');
 
 module.exports = () => {
   return gulp.src([
-    join('/src/**/*.scss'),
-    '!' + join('/src/**/*.no.scss')
+    join('/src/css/**/*.scss'),
+    '!' + join('/src/css/**/*.no.scss')
   ])
-    .pipe(sass()).on('error', log)
-    .pipe(autoprefixer())
-    .pipe(gulpif(isProduction, cleanCSS({ compatibility: 'ie8' })))
-    .pipe(gulp.dest(join('/dist')))
-    .pipe(browserSync.stream())
+      .pipe(sass()).on('error', log)
+      .pipe(autoprefixer())
+      .pipe(gulpif(isProduction, cleanCSS({ compatibility: 'ie8' })))
+      .pipe(gulp.dest(join('/dist/css')))
+      .pipe(browserSync.stream())
 };

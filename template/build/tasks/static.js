@@ -4,12 +4,7 @@ const { join } = require('../utils');
 
 module.exports = () => {
   return gulp.src([
-    join('/src/**/*.*'),
-    '!' + join('/src/**/*.md'),
-    '!' + join('/src/**/*.ejs'),
-    '!' + join('/src/**/*.scss'),
-    '!' + join('/src/**/*.js'),
-    '!' + join('/src/**/*.html')
+    join('/src/static/**/*.*')
   ])
-    .pipe(gulp.dest(join('/dist')))
+      .pipe(gulp.dest(join('/dist/static')))
 };
