@@ -8,3 +8,6 @@
 <meta name="format-detection" content="telephone=no">
 <link rel="shortcut icon" href="<%= icon %>" type="image/x-icon">
 <link rel="stylesheet" href="./css/app.css">
+<% optimization.dnsPrefetch.forEach((dns) => { %>
+    <link rel="dns-prefetch" href="<%= dns %>">
+<% }) %>

@@ -9,7 +9,13 @@ module.exports = {
         description: 'Here is the site description',
         keywords: ['keyword1', 'keyword2'],
         icon: './images/favicon.ico',
-        author: ['gmail.com', '@', 'veryplans'].reverse().join('')
+        author: ['gmail.com', '@', 'veryplans'].reverse().join(''),
+        // some optimization (if you don't know their usages, just ignore them)
+        optimization: {
+            dnsPrefetch: [
+                // '//www.example.com'
+            ]
+        }
     },
     // wechat share
     share: {
