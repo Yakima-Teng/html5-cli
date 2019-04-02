@@ -74,6 +74,10 @@ Now you have successfully created the project. You can now go to the project roo
 
 * `npm run deploy`: Deploy your files to your server through SFTP protocol.
 
+## TODO list
+
+* adjustment for iPhoneX
+
 ## Contribution
 
 Contribution is welcome.
