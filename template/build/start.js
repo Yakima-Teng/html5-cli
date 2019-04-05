@@ -15,36 +15,36 @@ const taskRemoveRedundantFolder = require('./tasks/remove-redundant-folder')
 const { shouldStartServer } = require('./utils')
 
 const taskEjsAfterHandlingCSSAndJS = gulp.series(
-  gulp.parallel(
-    taskSass,
-    taskJS
-  ),
-  taskEJS,
-  taskRemoveRedundantFolder
+    gulp.parallel(
+        taskSass,
+        taskJS
+    ),
+    taskEJS,
+    taskRemoveRedundantFolder
 )
 
 const start = gulp.series(
-  gulp.parallel(
-    taskEjsAfterHandlingCSSAndJS,
-    taskStatic,
-    taskImages
-  ),
-  shouldStartServer ? gulp.parallel(
-    taskServe,
-    taskRemoveRedundantFolder
-  ) : taskRemoveRedundantFolder
+    gulp.parallel(
+        taskEjsAfterHandlingCSSAndJS,
+        taskStatic,
+        taskImages
+    ),
+    shouldStartServer ? gulp.parallel(
+        taskServe,
+        taskRemoveRedundantFolder
+    ) : taskRemoveRedundantFolder
 )
 
 taskClean()
 start()
 
 if (shouldStartServer) {
-  gulpWatch([
-    join('/src/**/*.ejs'),
-    join('/src/**/site.data.config.js'),
-    join('/src/css/**/*.scss'),
-    join('/src/js/**/*.js'),
-  ], taskEjsAfterHandlingCSSAndJS)
-  gulpWatch([join('/src/static/**/*.*')], taskStatic)
-  gulpWatch([join('/src/images/**/*.*')], taskImages)
+    gulpWatch([
+        join('/src/**/*.ejs'),
+        join('/src/**/site.data.config.js'),
+        join('/src/css/**/*.scss'),
+        join('/src/js/**/*.js'),
+    ], taskEjsAfterHandlingCSSAndJS)
+    gulpWatch([join('/src/static/**/*.*')], taskStatic)
+    gulpWatch([join('/src/images/**/*.*')], taskImages)
 }

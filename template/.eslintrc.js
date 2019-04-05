@@ -1,6 +1,7 @@
 module.exports = {
-  extends: 'standard',
-  rules: {
-    'comma-dangle': [2, 'always-multiline'],
-  }
+    extends: 'standard',
+    rules: {
+        'comma-dangle': [2, 'always-multiline'],
+        'indent': ['error', 4],
+    },
 }

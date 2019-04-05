@@ -8,13 +8,13 @@ const log = require('fancy-log')
 const { browserSync, join, isProduction, projectName } = require('../utils')
 
 module.exports = () => {
-  return gulp.src([
-    join('/src/css/**/*.scss'),
-    '!' + join('/src/css/**/*.no.scss'),
-  ])
-    .pipe(sass()).on('error', log)
-    .pipe(autoprefixer())
-    .pipe(gulpif(isProduction, cleanCSS({ compatibility: 'ie8' })))
-    .pipe(gulp.dest(join(`/${projectName}/css`)))
-    .pipe(browserSync.stream())
+    return gulp.src([
+        join('/src/css/**/*.scss'),
+        '!' + join('/src/css/**/*.no.scss'),
+    ])
+        .pipe(sass()).on('error', log)
+        .pipe(autoprefixer())
+        .pipe(gulpif(isProduction, cleanCSS({ compatibility: 'ie8' })))
+        .pipe(gulp.dest(join(`/${projectName}/css`)))
+        .pipe(browserSync.stream())
 }

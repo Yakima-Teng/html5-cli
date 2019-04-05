@@ -11,18 +11,26 @@ const { join, browserSync, projectName } = require('../utils')
 const pathForSrcJS = path.join(__dirname, '../../src/js/')
 
 module.exports = () => {
-  return gulp.src([
-    join('/src/js/**/*.js'),
-    '!' + join('/src/js/**/*.no.js'),
-  ])
-    .pipe(named((file) => {
-      return file.history[0].split(pathForSrcJS)[1].replace(/\.js$/, '')
-    }))
-    .pipe(webpackStream(webpackConfig), webpackCompiler, (err, stats) => {
-      if (err) {
-        log(err)
-      }
-    })
-    .pipe(gulp.dest(join(`/${projectName}/js`)))
-    .pipe(browserSync.stream())
+    return gulp.src([
+        join('/src/js/**/*.js'),
+        '!' + join('/src/js/**/*.no.js'),
+    ])
+        .pipe(named((file) => {
+            return file.history[0].split(pathForSrcJS)[1].replace(/\.js$/, '')
+        })).on('error', (err) => {
+            if (err) {
+                log(err)
+            }
+        })
+        .pipe(webpackStream(webpackConfig), webpackCompiler, (err, stats) => {
+            if (err) {
+                log(err)
+            }
+        })
+        .pipe(gulp.dest(join(`/${projectName}/js`))).on('error', (err) => {
+            if (err) {
+                log(err)
+            }
+        })
+        .pipe(browserSync.stream())
 }
