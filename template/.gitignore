@@ -64,3 +64,4 @@ typings/
 build/deploy.js
 dist
 .DS_Store
+/template

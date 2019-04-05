@@ -1,4 +1,5 @@
 const gulp = require('gulp')
+const gulpWatch = require('gulp-watch')
 
 const { join } = require('./utils')
 
@@ -9,23 +10,41 @@ const taskImages = require('./tasks/images')
 const taskJS = require('./tasks/js')
 const taskSass = require('./tasks/sass')
 const taskServe = require('./tasks/serve')
+const taskRemoveRedundantFolder = require('./tasks/remove-redundant-folder')
+
+const { shouldStartServer } = require('./utils')
+
+const taskEjsAfterHandlingCSSAndJS = gulp.series(
+  gulp.parallel(
+    taskSass,
+    taskJS
+  ),
+  taskEJS,
+  taskRemoveRedundantFolder
+)
 
 const start = gulp.series(
-    gulp.parallel(
-        taskEJS,
-        taskSass,
-        taskStatic,
-        taskImages,
-        taskJS
-    ),
-    taskServe
+  gulp.parallel(
+    taskEjsAfterHandlingCSSAndJS,
+    taskStatic,
+    taskImages
+  ),
+  shouldStartServer ? gulp.parallel(
+    taskServe,
+    taskRemoveRedundantFolder
+  ) : taskRemoveRedundantFolder
 )
 
 taskClean()
 start()
 
-gulp.watch([join('/src/**/*.ejs'), join('/src/**/site.data.config.js')], taskEJS)
-gulp.watch([join('/src/css/**/*.scss')], taskSass)
-gulp.watch([join('/src/js/**/*.js')], taskJS)
-gulp.watch([join('/src/static/**/*.*')], taskStatic)
-gulp.watch([join('/src/images/**/*.*')], taskImages)
+if (shouldStartServer) {
+  gulpWatch([
+    join('/src/**/*.ejs'),
+    join('/src/**/site.data.config.js'),
+    join('/src/css/**/*.scss'),
+    join('/src/js/**/*.js'),
+  ], taskEjsAfterHandlingCSSAndJS)
+  gulpWatch([join('/src/static/**/*.*')], taskStatic)
+  gulpWatch([join('/src/images/**/*.*')], taskImages)
+}

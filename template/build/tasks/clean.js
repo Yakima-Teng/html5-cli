@@ -1,7 +1,7 @@
 const fse = require('fs-extra')
 
-const { join } = require('../utils');
+const { join, projectName } = require('../utils')
 
 module.exports = () => {
-    return fse.emptyDirSync(join('/dist'))
-};
+  return fse.emptyDirSync(join(`/${projectName}`))
+}
