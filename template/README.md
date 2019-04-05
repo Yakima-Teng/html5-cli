@@ -65,3 +65,11 @@ yarn deploy
 ## 协议
 
 本项目采用[MIT协议](./LICENSE)。
+
+## TODO list
+
+* `yarn start`时的报错信息优化；
+
+* 编码时是否存在样式和脚本未内联至html文件中的情况；
+
+* 开发阶段报错的追踪；
