@@ -17,20 +17,12 @@ module.exports = () => {
     ])
         .pipe(named((file) => {
             return file.history[0].split(pathForSrcJS)[1].replace(/\.js$/, '')
-        })).on('error', (err) => {
-            if (err) {
-                log(err)
-            }
-        })
+        }))
         .pipe(webpackStream(webpackConfig), webpackCompiler, (err, stats) => {
             if (err) {
                 log(err)
             }
         })
-        .pipe(gulp.dest(join(`/${projectName}/js`))).on('error', (err) => {
-            if (err) {
-                log(err)
-            }
-        })
+        .pipe(gulp.dest(join(`/${projectName}/js`)))
         .pipe(browserSync.stream())
 }

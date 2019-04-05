@@ -5,9 +5,9 @@
     "main": "README.md",
     "directories": {},
     "scripts": {
+        "lint": "eslint --fix src/js/ build/ src/site.data.config.js webpack.config.js --ignore-pattern '!.eslintrc.js' && node build/examine.js",
         "start": "cross-env NODE_ENV=development SERVER=1 node build/start.js",
-        "debug":"cross-env NODE_ENV=development SERVER=1 node $NODE_DEBUG_OPTION build/start.js",
-        "lint": "eslint --fix src/js/ build/ src/site.data.config .eslintrc.js --ignore-pattern '!.eslintrc.js' && node build/examine.js",
+        "build": "cross-env NODE_ENV=production SERVER=0 node build/start.js",
         "deploy": "node build/deploy.js"
     },
     "repository": {

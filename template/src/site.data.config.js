@@ -17,21 +17,21 @@ module.exports = {
         optimization: {
             dnsPrefetch: [
                 // '//www.example.com'
-            ]
-        }
+            ],
+        },
     },
     // 微信分享
     share: {
         enable: false,
         title: '微信分享标题',
         description: '微信分享中的描述信息',
-        icon: './images/share.png' // 分享图标
+        icon: './images/share.png', // 分享图标
     },
     // 本地开发时转发请求避免跨域问题
     proxyConfig: {
         '/path/api': {
             target: 'http://111.22.333.4',
             changeOrigin: true,
-        }
-    }
+        },
+    },
 }
