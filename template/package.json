@@ -6,8 +6,8 @@
     "directories": {},
     "scripts": {
         "lint": "eslint --fix src/js/ build/ src/site.data.config.js webpack.config.js --ignore-pattern '!.eslintrc.js' && node build/examine.js",
-        "start": "cross-env NODE_ENV=development SERVER=1 node build/start.js",
-        "build": "cross-env NODE_ENV=production SERVER=0 node build/start.js",
+        "start": "cross-env NODE_ENV=development SERVER=1 INLINE=0 node $NODE_DEBUG_OPTION build/start.js",
+        "build": "cross-env NODE_ENV=production SERVER=0 INLINE=1 node build/start.js",
         "deploy": "node build/deploy.js"
     },
     "repository": {
