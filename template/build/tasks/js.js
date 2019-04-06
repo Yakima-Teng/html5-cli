@@ -24,7 +24,9 @@ module.exports = () => {
             }
         })
         // 修复yarn start（NODE_ENV=development）命令下js报错看不到具体报错信息的问题
-        .on('error', (err) => { /* do nothing here */ })
+        /* eslint-disable handle-callback-err */
+        .on('error', (err) => {})
+        /* eslint-enable handle-callback-err */
         .pipe(gulp.dest(join(`/${projectName}/js`)))
         .pipe(browserSync.stream())
 }
