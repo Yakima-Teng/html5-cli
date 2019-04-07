@@ -14,7 +14,7 @@
 
 * 👫 支持使用ES6+新特性；
 
-* 🏇 自动压缩js、css并[内联](./docs/inline.md)至html文件中，加快页面加载速度；
+* 🏇 自动压缩js、css，加快页面加载速度；
 
 * 🏏 编译产物目录名根据项目名[动态生成](./docs/compile-folder-name.md)；
 
@@ -65,7 +65,3 @@ yarn deploy
 ## 协议
 
 本项目采用[MIT协议](./LICENSE)。
-
-## TODO list
-
-* 编码时是否存在样式和脚本未内联至html文件中的情况；
