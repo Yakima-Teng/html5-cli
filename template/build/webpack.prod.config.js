@@ -229,7 +229,7 @@ module.exports = {
             // First, run the linter.
             // It's important to do this before Babel processes the JS.
             {
-                test: /\.(mjs|jsx)$/,
+                test: /\.(js|mjs|jsx)$/,
                 enforce: 'pre',
                 use: [
                     {

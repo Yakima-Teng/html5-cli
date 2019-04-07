@@ -128,7 +128,7 @@ module.exports = {
             // It's important to do this before Babel processes the JS.
             // 暂时不处理.js后缀的文件
             {
-                test: /\.(mjs|jsx)$/,
+                test: /\.(js|mjs|jsx)$/,
                 enforce: 'pre',
                 use: [
                     {
