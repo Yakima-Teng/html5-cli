@@ -20,7 +20,7 @@
   "bugs": {
     "url": ""
   },
-  "homepage": ".",
+  "homepage": "./",
   "dependencies": {
     "@babel/polyfill": "7.2.5",
     "@babel/runtime": "7.3.4",

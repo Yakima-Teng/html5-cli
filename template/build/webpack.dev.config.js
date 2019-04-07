@@ -24,7 +24,7 @@ const cssRegex = /\.css$/
 const cssModuleRegex = /\.module\.css$/
 const sassRegex = [/\.sass$/, /\.scss$/]
 // 为了兼容旧代码，将.scss文件也当做模块化的样式了，其实不建议用.scss文件来做模块化，这样想直接写非模块化的.scss就比较麻烦了，需要用上面定义的.normal.scss作为后缀
-const sassModuleRegex = [/\.(module\.(scss|sass))$/, /\.scss$/]
+const sassModuleRegex = [/\.(module\.(scss|sass))$/]
 
 // common function to get style loaders
 const getStyleLoaders = (cssOptions, preProcessor) => {
