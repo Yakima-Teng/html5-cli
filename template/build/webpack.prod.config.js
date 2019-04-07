@@ -13,6 +13,7 @@ const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin')
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent')
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin')
 const CopyPlugin = require('copy-webpack-plugin')
+const pkg = require('../package')
 const siteDataConfig = require('../src/site.data.config')
 
 const { getVersionDate, join, projectName } = require('./utils')
@@ -109,7 +110,7 @@ module.exports = {
         filename: 'js/[name].[chunkhash:8].js',
         chunkFilename: 'js/[name].[chunkhash:8].chunk.js',
         // We inferred the "public path" (such as / or /my-project) from homepage.
-        publicPath: '/',
+        publicPath: pkg.homepage || '/',
         // Point sourcemap entries to original disk location (format as URL on Windows)
         devtoolModuleFilenameTemplate: info =>
             path
