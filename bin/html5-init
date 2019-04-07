@@ -6,6 +6,7 @@ const path = require('path')
 const ora = require('ora')
 const home = require('user-home')
 const chalk = require('chalk')
+const fs = require('fs-extra')
 const logger = require('../lib/logger')
 const generate = require('../lib/generate')
 const checkVersion = require('../lib/check-version')
@@ -56,6 +57,8 @@ const to = path.resolve(projectName || '.')
 function downloadAndGenerate (template) {
   const spinner = ora('downloading template')
   spinner.start()
+  // 先清空，避免出现git仓库模板文件中删除了的文件，因为本地缓存的此前版本中还存在，而导致创建的新项目模板文件中仍旧存在的问题
+  fs.removeSync(templatePath)
   download(template, templatePath, { clone }, err => {
     spinner.stop()
     err && logger.fatal('Failed to download repo ' + template + ': ' + err.message.trim())
