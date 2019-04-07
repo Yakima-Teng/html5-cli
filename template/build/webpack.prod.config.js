@@ -100,7 +100,7 @@ module.exports = {
     // You can exclude the *.map files from the build during deployment.
     devtool: false,
     // In production, we only want to load the app code.
-    entry: [join('/src/js/app.js')],
+    entry: [join('/src/js/app.jsx')],
     output: {
         // The build folder.
         path: join(`/${projectName}`),

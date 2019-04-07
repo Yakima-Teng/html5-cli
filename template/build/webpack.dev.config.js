@@ -66,7 +66,7 @@ module.exports = {
     devtool: 'cheap-module-eval-source-map',
     entry: [
         require.resolve('react-dev-utils/webpackHotDevClient'),
-        join('/src/js/app.js'),
+        join('/src/js/app.jsx'),
     ],
     output: {
         // Tells webpack to include comments in bundles with information about the contained modules. This option defaults to true in development and false in production mode respectively.

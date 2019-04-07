@@ -37,7 +37,7 @@ const isInteractive = process.stdout.isTTY
 // Warn and crash if required files are missing
 if (!checkRequiredFiles([
     join('/src/index.html'),
-    join('/src/js/app.js'),
+    join('/src/js/app.jsx'),
 ])) {
     process.exit(1)
 }
