@@ -16,7 +16,7 @@ module.exports = {
         // 'package.json': 'true',
         // 'README.md': 'true',
     },
-    // skipInterpolation: 'src/**/*.bmp',
+    skipInterpolation: 'src/**/*.bmp',
     complete (data, { chalk, logger, files, fs }) {
         // do things here
     }
