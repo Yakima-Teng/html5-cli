@@ -12,5 +12,7 @@ gulp.src(join(`/${projectName}/**/*`))
         dest: `/home/username/${projectName}/`,
     }))
     .on('error', function (err) {
+        /* eslint-disable no-console */
         console.log(err)
+        /* eslint-enable no-console */
     })

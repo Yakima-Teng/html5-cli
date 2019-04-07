@@ -1,18 +1,6 @@
 const path = require('path')
 
-const { NODE_ENV, SERVER, INLINE } = process.env
-
-exports.browserSync = require('browser-sync').create()
-
 exports.join = (targetPath) => path.join(__dirname, '..', targetPath)
-
-exports.isProduction = NODE_ENV === 'production'
-
-// 是否需要启动本地服务（开发阶段用）
-exports.shouldStartServer = SERVER === '1'
-
-// 是否需要将js和css文件内联至html文件中（只会处理html中通过link和script标签引入时标记了inline属性的js和css文件）
-exports.shouldInline = INLINE === '1'
 
 const folderName = exports.folderName = path.join(__dirname, '..').replace(path.join(__dirname, '../../'), '')
 

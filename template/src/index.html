@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="shortcut icon" href="<%= htmlWebpackPlugin.options.head.icon %>" type="image/x-icon">
+    <% htmlWebpackPlugin.options.head.optimization.dnsPrefetch.forEach((dns) => { %>
+        <link rel="dns-prefetch" href="<%= dns %>">
+    <% }) %>
+</head>
+<body>
+<div class="site-wrapper">
+    <!-- <article class="site-content">
+        <div class="img-demo"></div>
+    </article>
+    <aside class="site-facilities"></aside> -->
+</div>
+<script src="./static/zepto.min.js"></script>
+</body>
+</html>

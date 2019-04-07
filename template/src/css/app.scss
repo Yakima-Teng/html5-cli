@@ -24,7 +24,12 @@ p {
  * utilities styles
  */
 
-
 /**
  * project specific style
  */
+.img-demo {
+    display: block;
+    width: 96px;
+    height: 96px;
+    background: transparent url('../images/share.png') scroll no-repeat center center;
+}
