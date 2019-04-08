@@ -34,3 +34,7 @@ p {
     background: transparent url('../images/share.png') scroll no-repeat center center;
     box-sizing: border-box;
 }
+.popup-list .am-list-body {
+    height: 210px;
+    overflow: auto;
+}

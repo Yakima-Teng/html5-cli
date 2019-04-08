@@ -141,7 +141,7 @@ module.exports = {
                             // 如果本地开发和测试测了都没问题那就视为没问题
                             // 不开这个功能在团队里推eslint比较麻烦
                             // 开eslint除了减少一些简单的bug，还可以避免不同分支源码比对时一大堆内容一样格式/空格等不一样导致的diff
-                            fix: false,
+                            fix: true,
                         },
                         loader: require.resolve('eslint-loader'),
                     },
@@ -227,7 +227,7 @@ module.exports = {
                     {
                         test: cssRegex,
                         exclude: cssModuleRegex,
-                        include: join('/src'),
+                        // include: join('/src'),
                         use: getStyleLoaders({
                             // importLoaders：在css-loader前应用的loader的数量，默认为0
                             importLoaders: 1,
@@ -237,7 +237,7 @@ module.exports = {
                     // using the extension .module.css
                     {
                         test: cssModuleRegex,
-                        include: join('/src'),
+                        // include: join('/src'),
                         use: getStyleLoaders({
                             importLoaders: 1,
                             // 启用CSS模块

@@ -1,4 +1,5 @@
 module.exports = {
+    parser: 'babel-eslint',
     extends: 'standard',
     plugins: [
         'react',
@@ -60,6 +61,9 @@ module.exports = {
         'comma-dangle': [2, 'always-multiline'],
         'indent': ['error', 4],
         'no-console': [2],
+    },
+    globals: {
+        alert: true,
     },
     settings: {
         react: {
