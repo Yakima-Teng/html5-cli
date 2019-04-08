@@ -1,10 +1,8 @@
 // write your code here
 import React from 'react'
-import { hydrate, render } from 'react-dom'
+import { render } from 'react-dom'
 
 import '../css/app.scss'
-
-const rootElement = document.getElementById('add')
 
 const Demo = (props) => (
     <div className="site-container">
@@ -15,8 +13,7 @@ const Demo = (props) => (
     </div>
 )
 
-if (rootElement.hasChildNodes()) {
-    hydrate(<Demo />, rootElement)
-} else {
-    render(<Demo />, rootElement)
-}
+render(
+    <Demo />,
+    document.getElementById('app')
+)
