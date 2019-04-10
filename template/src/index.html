@@ -3,13 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title><%= htmlWebpackPlugin.options.title %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- 设置`maximum-scale`以解决一些兼容问题 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover" />
     <meta name="format-detection" content="telephone=no">
     <link rel="shortcut icon" href="<%= htmlWebpackPlugin.options.head.icon %>" type="image/x-icon">
     <% htmlWebpackPlugin.options.head.optimization.dnsPrefetch.forEach((dns) => { %>
         <link rel="dns-prefetch" href="<%= dns %>">
     <% }) %>
+    <script src="https://as.alipayobjects.com/g/component/fastclick/1.0.6/fastclick.js"></script>
+    <script>
+        if ('addEventListener' in document) {
+            document.addEventListener('DOMContentLoaded', function() {
+                FastClick.attach(document.body);
+            }, false);
+        }
+        // 一些安卓手机不支持romise
+        if(!window.Promise) {
+            document.writeln('<script src="https://as.alipayobjects.com/g/component/es6-promise/3.2.2/es6-promise.min.js"'+'>'+'<'+'/'+'script>');
+        }
+    </script>
 </head>
 <body>
 <div id="app" class="site-wrapper"></div>

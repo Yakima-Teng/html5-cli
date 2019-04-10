@@ -74,7 +74,7 @@ yarn deploy
 
 以下是一些比较常见的item，完整列表[点此查看](./docs/README.md)。
 
-* [rem布局注意事项](docs/mobile/rem.md)
+📚 [rem布局注意事项](docs/mobile/rem.md)
 
 ## 反馈意见、贡献代码
 
