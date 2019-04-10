@@ -57,13 +57,3 @@ yarn start
 ```bash
 yarn deploy
 ```
-
-## 反馈意见、贡献代码
-
-📚 [反馈意见](./docs/feedback.md)
-
-📚 [贡献代码](./docs/contribution.md)
-
-## 协议
-
-本项目采用[MIT协议](./LICENSE)。
