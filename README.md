@@ -28,11 +28,7 @@ html5 init <project-name>
 h5 init <project-name>
 ```
 
-接下来就`cd <proejct-name>`进入到项目模板中，按照模板中的说明进行开发即可。
-
-## 模板
-
-目前，通过`h5 init <project-name>`创建项目时，使用的模板信息可[点此查看](./template/README.md)。
+接下来就`cd <proejct-name>`进入到项目模板中，按照[模板中的说明](./template/README.md)进行开发即可。
 
 ## 贡献
 
