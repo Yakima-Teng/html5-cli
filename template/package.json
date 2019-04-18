@@ -10,6 +10,12 @@
         "build": "node build/build.js",
         "deploy": "node build/deploy.js"
     },
+    "husky": {
+        "hooks": {
+            "pre-commit": "yarn lint",
+            "pre-push": "exit 0"
+        }
+    },
     "repository": {
         "type": "",
         "url": ""
