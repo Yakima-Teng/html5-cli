@@ -71,7 +71,7 @@ class App extends React.Component {
                     wrapProps={{ onTouchStart: this.onWrapTouchStart }}
                     afterClose={() => { alert('afterClose') }}
                 >
-                    <div style={{ height: 100, overflow: 'scroll' }}>
+                    <div style={{ height: '100px', overflow: 'scroll' }}>
                         scoll content...<br />
                         scoll content...<br />
                         scoll content...<br />
