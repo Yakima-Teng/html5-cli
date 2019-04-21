@@ -24,9 +24,9 @@
     "author": "",
     "license": "UNLICENSED",
     "bugs": {
-        "url": ""
+        "url": "https://github.com/Yakima-Teng/html5-cli/issues"
     },
-    "homepage": "./",
+    "homepage": "https://github.com/Yakima-Teng/html5-cli#readme",
     "dependencies": {
         "@babel/polyfill": "7.2.5",
         "@babel/runtime": "7.3.4",
