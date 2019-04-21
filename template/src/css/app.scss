@@ -32,9 +32,5 @@ p {
     width: 96px;
     height: 96px;
     background: transparent url('../images/share.png') scroll no-repeat center center;
-    box-sizing: border-box;
-}
-.popup-list .am-list-body {
-    height: 210px;
-    overflow: auto;
+    margin:20px auto 0;    
 }
