@@ -11,7 +11,7 @@ module.exports = {
         title: '网站标题',
         description: '这里是网站描述信息',
         keywords: ['关键词1', '关键词2'],
-        icon: './images/favicon.ico',
+        icon: './static/favicon.ico',
         author: ['gmail.com', '@', 'example'].reverse().join(''),
         // 一些优化（如果你不知道它们的用途的话可以直接忽略）
         optimization: {
