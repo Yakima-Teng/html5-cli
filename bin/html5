@@ -3,6 +3,6 @@
 const commander = require('commander')
 
 commander.version(require('../package').version)
-  .usage('<command> [options]')
-  .command('init', 'generate an html5 project')
-  .parse(process.argv)
+    .usage('<command> [options]')
+    .command('init', 'generate an html5 project')
+    .parse(process.argv)

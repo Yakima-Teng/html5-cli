@@ -16,37 +16,37 @@ const log = console.log
  * help
  */
 program.on('--help', () => {
-  log('  Examples:')
-  log()
-  log(chalk.gray('    # create an html5 project with the official template'))
-  log('    $ html5 init project-name')
-  log()
+    log('  Examples:')
+    log()
+    log(chalk.gray('    # create an html5 project with the official template'))
+    log('    $ html5 init project-name')
+    log()
 })
 
 /**
  * help
  */
 function help () {
-  program.parse(process.argv)
-  if (program.args.length < 1) {
-    return program.help()
-  }
+    program.parse(process.argv)
+    if (program.args.length < 1) {
+        return program.help()
+    }
 }
 help()
 
 
 log()
 process.on('exit', () => {
-  log()
+    log()
 })
 
 run()
 
 function run () {
-  checkVersion(() => {
-    const officialTemplate = 'Yakima-Teng/html5-cli'
-    downloadAndGenerate(officialTemplate)
-  })
+    checkVersion(() => {
+        const officialTemplate = 'Yakima-Teng/html5-cli'
+        downloadAndGenerate(officialTemplate)
+    })
 }
 
 const templatePath = path.join(home, '.html5-templates/html5-cli')
@@ -55,17 +55,17 @@ const clone = program.clone || false
 const to = path.resolve(projectName || '.')
 
 function downloadAndGenerate (template) {
-  const spinner = ora('downloading template')
-  spinner.start()
-  // 先清空，避免出现git仓库模板文件中删除了的文件，因为本地缓存的此前版本中还存在，而导致创建的新项目模板文件中仍旧存在的问题
-  fs.removeSync(templatePath)
-  download(template, templatePath, { clone }, err => {
-    spinner.stop()
-    err && logger.fatal('Failed to download repo ' + template + ': ' + err.message.trim())
-    generate(projectName, templatePath, to, err => {
-      err && logger.fatal(err)
-      log()
-      logger.success('Generated "%s"', projectName)
+    const spinner = ora('downloading template')
+    spinner.start()
+    // 先清空，避免出现git仓库模板文件中删除了的文件，因为本地缓存的此前版本中还存在，而导致创建的新项目模板文件中仍旧存在的问题
+    fs.removeSync(templatePath)
+    download(template, templatePath, { clone }, err => {
+        spinner.stop()
+        err && logger.fatal('Failed to download repo ' + template + ': ' + err.message.trim())
+        generate(projectName, templatePath, to, err => {
+            err && logger.fatal(err)
+            log()
+            logger.success('Generated "%s"', projectName)
+        })
     })
-  })
 }
