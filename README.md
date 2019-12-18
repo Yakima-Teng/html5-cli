@@ -40,7 +40,7 @@ html5-cli的主要特点有：
 
 ### 第一次使用前的准备
 
-***第一次使用前***，需要先全局安装`html5-cli`（后面再创建项目不需要再执行这个命令了）：
+***第一次使用前***，需要先全局安装`html5-cli`（后面再创建项目时不需要再执行这个命令了）：
 
 ```bash
 yarn global add html5-cli
@@ -57,7 +57,7 @@ h5 init <project-name>
 
 ### 本地开发
 
-进入到模板项目根目录，通过下面的命令进行本地开发（渲染模版文件时，可以直接读取到`src/site.data.config.js`文件中的配置内容）：
+进入到`<project-name>`模板项目根目录，通过下面的命令进行本地开发（渲染模版文件时，可以直接读取到`src/site.data.config.js`文件中的配置内容）：
 
 ```bash
 yarn start
