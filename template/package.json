@@ -8,7 +8,8 @@
         "lint": "eslint --ext .js,.jsx src/js/ build/ src/*.js *.js --ignore-pattern '!.eslintrc.js' && node build/examine-package-json-version.js",
         "start": "node build/start.js",
         "build": "node build/build.js",
-        "deploy": "node build/deploy.js"
+        "deploy": "node build/deploy.js",
+        "buildAndDeploy": "yarn build && yarn deploy"
     },
     "husky": {
         "hooks": {

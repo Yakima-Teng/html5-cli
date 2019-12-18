@@ -10,7 +10,9 @@
 
 是不是为了创建这些项目，都需要重复一些编写/复制webpack配置文件、编译命令等工作？
 
-通过脚手架创建模板项目就是为了减少这些重复性工作，目前模板项目的主要特点有：
+通过脚手架创建模板项目就是为了减少这些重复性工作。
+
+html5-cli的主要特点有：
 
 * 🌐 修改文件时自动刷新浏览器，方便查看效果；
 
@@ -32,31 +34,36 @@
 
 * 🚀 对于支持SFTP协议的服务器，支持命令行直接发布本地编译产物；
 
-* 🥤 集成支持按需加载的UI组件库：Ant design mobile；
+* 🥤 集成支持按需加载的UI组件库：Ant design mobile（可选）；
 
 ## 使用
 
-第一次使用前，需要先全局安装`html5-cli`：
+### 第一次使用前的准备
+
+***第一次使用前***，需要先全局安装`html5-cli`（后面再创建项目不需要再执行这个命令了）：
 
 ```bash
 yarn global add html5-cli
 ```
 
-然后，你就可以在你的终端中使用`html5`，或者使用别名`h5`，然后通过下面的方式创建一个新的空项目:
+然后，你就可以在你的终端中使用`html5`，或者使用别名`h5`了。
+
+### 创建项目
 
 ```bash
-# 将<project-name>替换成实际项目名
-html5 init <project-name>
-
-# 或者使用h5别名替换html5
+# 将<project-name>替换成实际项目名（这里`h5`也可以换成`html5`，作用相同，看你喜欢用哪个命令）
 h5 init <project-name>
 ```
 
-接下来就可以`cd <proejct-name>`进入到模板项目根目录，并通过下面的命令进行本地开发（渲染模版文件时，可以直接读取到`src/site.data.config.js`文件中的配置内容）：
+### 本地开发
+
+进入到模板项目根目录，通过下面的命令进行本地开发（渲染模版文件时，可以直接读取到`src/site.data.config.js`文件中的配置内容）：
 
 ```bash
 yarn start
 ```
+
+### 构建产物
 
 开发完毕后，可以通过下面的命令构建正式编译产物：
 
@@ -64,11 +71,16 @@ yarn start
 yarn build
 ```
 
-最后，如果目标服务器支持通过SSH协议进行文件部署，则可通过下面的命令进行部署（需要先依据`build/deploy-example.js`的内容写一个`build/deploy.js`文件）：
+### 部署上线
+
+如果目标服务器支持通过SSH协议进行文件部署，则可通过下面的命令进行部署（需要先依据`build/deploy-example.js`的内容写一个`build/deploy.js`文件）：
 
 ```bash
 yarn deploy
 ```
+
+注：如果不想每次都敲`yarn build`和`yarn deploy`命令，可以直接执行`yarn buildAndDeploy`命令，
+`yarn buildAndDeploy`命令会先编译产物然后直接发布，跟分开执行`yarn build`和`yarn deploy`效果是等价的。
 
 ## 移动端开发注意事项
 
