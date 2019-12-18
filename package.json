@@ -31,7 +31,9 @@
     },
     "devDependencies": {},
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "debugger-h5": "node $NODE_DEBUG_OPTION ./bin/html5",
+        "debugger-h5-init": "node $NODE_DEBUG_OPTION ./bin/html5-init"
     },
     "repository": {
         "type": "git",
