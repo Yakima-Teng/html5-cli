@@ -39,6 +39,15 @@
             var dpr = win.devicePixelRatio || 1
             var tid
 
+            function checkRootFondSizeAgain () { // 部分安卓用户会将手机字体设置得很大，导致页面样式错乱，用这个方法进行纠偏
+                var rootFontSizeSetByUs = parseFloat(document.documentElement.style.fontSize)
+                var rootFontSizeInActual = parseFloat(window.getComputedStyle(document.getElementsByTagName("html")[0]).fontSize)
+                if (Math.abs(rootFontSizeInActual - rootFontSizeSetByUs) < 1) { return }
+                var fontSize = rootFontSizeSetByUs / (rootFontSizeInActual / rootFontSizeSetByUs) + 'px'
+                remStyle.innerHTML = 'html{font-size:' + fontSize + ' !important;}'
+                docEl.style.fontSize = fontSize
+            }
+
             function setRootFontSize() {
                 var width = docEl.getBoundingClientRect().width
                 if (width > maxWidth) {
@@ -48,6 +57,8 @@
                 var fontSize = rem + 'px'
                 remStyle.innerHTML = 'html{font-size:' + fontSize + ' !important;}'
                 docEl.style.fontSize = fontSize
+
+                checkRootFondSizeAgain()
             }
 
             if (docEl.firstElementChild) {
