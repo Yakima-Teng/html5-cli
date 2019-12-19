@@ -44,8 +44,9 @@ p {
  */
 .img-demo {
     display: block;
-    width: 96px;
-    height: 96px;
+    width: .96rem;
+    height: .96rem;
     background: transparent url('../images/share.png') scroll no-repeat center center;
-    margin: 20px auto 0;
+    background-size: 100% 100%;
+    margin: .2rem auto 0;
 }
