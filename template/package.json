@@ -9,11 +9,11 @@
         "start": "node build/start.js",
         "build": "node build/build.js",
         "deploy": "node build/deploy.js",
-        "buildAndDeploy": "yarn build && yarn deploy"
+        "buildAndDeploy": "npm run build && npm run deploy"
     },
     "husky": {
         "hooks": {
-            "pre-commit": "yarn lint",
+            "pre-commit": "npm run lint",
             "pre-push": "exit 0"
         }
     },
