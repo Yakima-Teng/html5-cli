@@ -7,8 +7,9 @@ import {
     Route,
     useRouteMatch,
 } from 'react-router-dom'
+import loadable from '@loadable/component'
 
-const LoadableCodeIndex = require(/* webpackChunkName: "codeIndex" */ '../modules/code/index/page.jsx').default
+const LoadableCodeIndex = loadable(() => import(/* webpackChunkName: "codeIndex" */ '../modules/code/index/page.jsx'))
 
 export default function RouteCode () {
     const match = useRouteMatch()

@@ -7,13 +7,10 @@ import {
     Route,
     useRouteMatch,
 } from 'react-router-dom'
-// import loadable from '@loadable/component'
+import loadable from '@loadable/component'
 
-// const LoadableAdIndex = loadable(() => import(/* webpackChunkName: "adIndex" */ '../modules/ad/index/page.jsx'))
-// const LoadableAdShow = loadable(() => import(/* webpackChunkName: "adShow" */ '../modules/ad/show/page.jsx'))
-
-const LoadableAdIndex = require(/* webpackChunkName: "adIndex" */ '../modules/ad/index/page.jsx').default
-const LoadableAdShow = require(/* webpackChunkName: "adShow" */ '../modules/ad/show/page.jsx').default
+const LoadableAdIndex = loadable(() => import(/* webpackChunkName: "adIndex" */ '../modules/ad/index/page.jsx'))
+const LoadableAdShow = loadable(() => import(/* webpackChunkName: "adShow" */ '../modules/ad/show/page.jsx'))
 
 export default function RouteTemperature () {
     const match = useRouteMatch()
