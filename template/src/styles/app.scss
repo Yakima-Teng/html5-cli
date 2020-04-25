@@ -3,7 +3,17 @@
 /**
  * reset css
  */
-body {
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    box-sizing: border-box;
+}
+html body {
     margin: 0;
     font-size: 16px;
     line-height: 2;
@@ -42,11 +52,3 @@ p {
 /**
  * project specific style
  */
-.img-demo {
-    display: block;
-    width: .96rem;
-    height: .96rem;
-    background: transparent url('../images/share.png') scroll no-repeat center center;
-    background-size: 100% 100%;
-    margin: .2rem auto 0;
-}

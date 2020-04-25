@@ -100,10 +100,10 @@ module.exports = {
     // You can exclude the *.map files from the build during deployment.
     devtool: false,
     // In production, we only want to load the app code.
-    entry: [join('/src/js/app.jsx')],
+    entry: [join('/src/app.jsx')],
     output: {
         // The build folder.
-        path: join(`/${projectName}`),
+        path: join(`/dist/${projectName}`),
         // Generated JS file names (with nested folders).
         // There will be one main bundle, and one file per asynchronous chunk.
         // We don't currently advertise code splitting but Webpack supports it.
@@ -408,7 +408,11 @@ module.exports = {
         new CopyPlugin([
             {
                 from: join('/src/static'),
-                to: join(`/${projectName}/static`),
+                to: join(`/dist/${projectName}/static`),
+            },
+            {
+                from: join('/src/images'),
+                to: join(`/dist/${projectName}/images`),
             },
         ]),
         // Generates an `index.html` file with the <script> injected.

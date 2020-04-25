@@ -37,7 +37,7 @@ const isInteractive = process.stdout.isTTY
 // Warn and crash if required files are missing
 if (!checkRequiredFiles([
     join('/src/index.html'),
-    join('/src/js/app.jsx'),
+    join('/src/app.jsx'),
 ])) {
     process.exit(1)
 }
@@ -53,12 +53,12 @@ checkBrowsers(join('/'), isInteractive)
     .then(() => {
         // First, read the current file sizes in build directory.
         // This lets us display how much they changed later.
-        return measureFileSizesBeforeBuild(join(`/${projectName}`))
+        return measureFileSizesBeforeBuild(join(`/dist/${projectName}`))
     })
     .then(previousFileSizes => {
         // Remove all content but keep the directory so that
         // if you're in it, you don't end up in Trash
-        fs.emptyDirSync(join(`/${projectName}`))
+        fs.emptyDirSync(join(`/dist/${projectName}`))
         // Merge with the public folder
         copyPublicFolder()
         // Start the webpack build
@@ -93,7 +93,7 @@ checkBrowsers(join('/'), isInteractive)
             printFileSizesAfterBuild(
                 stats,
                 previousFileSizes,
-                join(`/${projectName}`),
+                join(`/dist/${projectName}`),
                 WARN_AFTER_BUNDLE_GZIP_SIZE,
                 WARN_AFTER_CHUNK_GZIP_SIZE
             )
@@ -104,7 +104,7 @@ checkBrowsers(join('/'), isInteractive)
             const appPackage = require('../package')
             const publicUrl = '/'
             const publicPath = config.output.publicPath
-            const buildFolder = path.relative(process.cwd(), join(`/${projectName}`))
+            const buildFolder = path.relative(process.cwd(), join(`/dist/${projectName}`))
             printHostingInstructions(
                 appPackage,
                 publicUrl,
@@ -185,7 +185,7 @@ function build (previousFileSizes) {
             }
             if (writeStatsJson) {
                 return bfj
-                    .write(join(`/${projectName}`) + '/bundle-stats.json', stats.toJson())
+                    .write(join(`/dist/${projectName}`) + '/bundle-stats.json', stats.toJson())
                     .then(() => resolve(resolveArgs))
                     .catch(error => reject(new Error(error)))
             }
@@ -196,7 +196,7 @@ function build (previousFileSizes) {
 }
 
 function copyPublicFolder () {
-    fs.copySync(join('/src/index.html'), join(`/${projectName}`), {
+    fs.copySync(join('/src/index.html'), join(`/dist/${projectName}`), {
         dereference: true,
         filter: file => {
             return file !== join('/src/index.html')

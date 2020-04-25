@@ -64,6 +64,9 @@ module.exports = {
     },
     globals: {
         alert: true,
+        $: true,
+        location: true,
+        history: true,
     },
     settings: {
         react: {

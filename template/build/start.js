@@ -26,13 +26,15 @@ const openBrowser = require('react-dev-utils/openBrowser')
 const config = require('./webpack.dev.config')
 const createDevServerConfig = require('./webpack-dev-server.config')
 
+const siteDataConfig = require('../src/site.data.config')
+
 const useYarn = fs.existsSync(path.resolve(__dirname, '../yarn.lock'))
 const isInteractive = process.stdout.isTTY
 
 // Warn and crash if required files are missing
 if (!checkRequiredFiles([
     path.resolve(__dirname, '../src/index.html'),
-    path.resolve(__dirname, '../src/js/app.jsx'),
+    path.resolve(__dirname, '../src/app.jsx'),
 ])) {
     process.exit(1)
 }
@@ -77,6 +79,11 @@ checkBrowsers(path.resolve(__dirname, '../'), isInteractive)
         const protocol = process.env.HTTPS === 'true' ? 'https' : 'http'
         const appName = require(path.resolve(__dirname, '../package.json')).name
         const urls = prepareUrls(protocol, HOST, port)
+
+        urls.localUrlForBrowser += siteDataConfig.openUrl
+        urls.localUrlForTerminal += siteDataConfig.openUrl
+        urls.lanUrlForTerminal += siteDataConfig.openUrl
+
         // Create a webpack compiler that is configured with custom messages.
         const compiler = createCompiler({ webpack, config, appName, urls, useYarn })
         // Load proxy config

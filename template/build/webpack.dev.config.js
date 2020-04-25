@@ -66,7 +66,7 @@ module.exports = {
     devtool: 'cheap-module-eval-source-map',
     entry: [
         require.resolve('react-dev-utils/webpackHotDevClient'),
-        join('/src/js/app.jsx'),
+        join('/src/app.jsx'),
     ],
     output: {
         // Tells webpack to include comments in bundles with information about the contained modules. This option defaults to true in development and false in production mode respectively.
@@ -75,7 +75,7 @@ module.exports = {
         // This does not produce a real file. It's just the virtual path that is
         // served by WebpackDevServer in development. This is the JS bundle
         // containing code from all our entry points, and the Webpack runtime.
-        filename: '[name].js',
+        filename: '[name].js?[hash:8]',
         // This is the URL that app is served from. We use "/" in development.
         publicPath: '/',
         // Point sourcemap entries to original disk location (format as URL on Windows)
@@ -308,6 +308,10 @@ module.exports = {
             {
                 from: 'src/static',
                 to: 'static',
+            },
+            {
+                from: 'src/images',
+                to: 'images',
             },
         ]),
         // Generates an `index.html` file with the <script> injected.
