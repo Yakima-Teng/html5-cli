@@ -47,7 +47,7 @@ html5-cli官方模板的主要特点有：
 ***第一次使用前***，需要先全局安装`html5-cli`（后面再创建项目时不需要再执行这个命令了）：
 
 ```bash
-yarn global add html5-cli
+npm install -g html5-cli
 ```
 
 然后，你就可以在你的终端中使用`html5`，或者使用别名`h5`了。
@@ -64,7 +64,7 @@ h5 init <project-name>
 进入到`<project-name>`模板项目根目录，通过下面的命令进行本地开发（渲染模版文件时，可以直接读取到`src/site.data.config.js`文件中的配置内容）：
 
 ```bash
-yarn start
+npm run start
 ```
 
 ### 构建产物
@@ -72,7 +72,7 @@ yarn start
 开发完毕后，可以通过下面的命令构建正式编译产物：
 
 ```bash
-yarn build
+npm run build
 ```
 
 ### 部署上线
@@ -80,11 +80,11 @@ yarn build
 如果目标服务器支持通过SSH协议进行文件部署，则可通过下面的命令进行部署（需要先依据`build/deploy-example.js`的内容写一个`build/deploy.js`文件）：
 
 ```bash
-yarn deploy
+npm deploy
 ```
 
-注：如果不想每次都敲`yarn build`和`yarn deploy`命令，可以直接执行`yarn buildAndDeploy`命令，
-`yarn buildAndDeploy`命令会先编译产物然后直接发布，跟分开执行`yarn build`和`yarn deploy`效果是等价的。
+注：如果不想每次都敲`npm run build`和`npm run deploy`命令，可以直接执行`npm run buildAndDeploy`命令，
+`npm run buildAndDeploy`命令会先编译产物然后直接发布，跟分开执行`npm run build`和`npm run deploy`效果是等价的。
 
 ## 移动端开发注意事项
 
