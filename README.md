@@ -1,6 +1,20 @@
 # html5-cli
 
+<p align="center">
+  <a href="https://npmcharts.com/compare/html5-cli?minimal=true">
+    <img src="https://img.shields.io/npm/dm/html5-cli.svg" alt="Downloads">
+  </a>
+  <a href="https://www.npmjs.com/package/html5-cli">
+    <img src="https://img.shields.io/npm/v/html5-cli.svg" alt="Version">
+  </a>
+  <a href="https://www.npmjs.com/package/html5-cli">
+    <img src="https://img.shields.io/npm/l/html5-cli.svg" alt="License">
+  </a>
+</p>
+
 > 快速创建针对移动端的初始模板，方便快速开发，适用于移动端日常专题、活动页等的开发。
+
+***王婆卖瓜系列：如果你的项目简单到不太需要模块化的组件，js代码量也很少。不妨移步隔壁[classic-cli](https://github.com/Yakima-Teng/classic-cli)，classic-cli是给那种传统的前端开发模式使用的，可无侵入式地使用构建构建，即，随时可以零成本切换成不依赖构建工具的开发方式。***
 
 注：项目文档后半部分还集成了移动端项目开发常见注意事项（持续更新中，欢迎提PR）。
 
