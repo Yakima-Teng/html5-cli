@@ -75,6 +75,17 @@ npm install -g html5-cli
 h5 init <project-name>
 ```
 
+### 安装项目依赖
+
+进入项目后，安装起来
+
+```bash
+npm install
+
+# 如果依赖安装较慢，可以使用淘宝镜像来安装
+npm i --registry=https://registry.npm.taobao.org
+```
+
 ### 本地开发
 
 进入到`<project-name>`模板项目根目录，通过下面的命令进行本地开发（渲染模版文件时，可以直接读取到`src/site.data.config.js`文件中的配置内容）：

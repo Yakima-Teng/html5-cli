@@ -36,9 +36,7 @@ const shouldInlineRuntimeChunk = true
 // style files regexes
 const cssRegex = /\.css$/
 const cssModuleRegex = /\.module\.css$/
-const sassRegex = [/\.sass$/, /\.scss$/]
-// 为了兼容旧代码，将.scss文件也当做模块化的样式了，其实不建议用.scss文件来做模块化，这样想直接写非模块化的.scss就比较麻烦了，需要用上面定义的.normal.scss作为后缀
-const sassModuleRegex = [/\.(module\.(scss|sass))$/]
+const lessRegex = [/\.less$/]
 
 const shouldUseSourceMap = false
 
@@ -206,7 +204,7 @@ module.exports = {
         // https://github.com/facebook/create-react-app/issues/290
         // `web` extension prefixes have been added for better support
         // for React Native Web.
-        extensions: ['.js', '.jsx', '.mjs', '.sass', '.scss', '.css', '.ejs'],
+        extensions: ['.js', '.jsx', '.mjs', '.less', '.css', '.ejs'],
         alias: {
             '@': join('/src'),
         },
@@ -348,40 +346,23 @@ module.exports = {
                             getLocalIdent: getCSSModuleLocalIdent,
                         }),
                     },
-                    // Opt-in support for SASS. The logic here is somewhat similar
-                    // as in the CSS routine, except that "sass-loader" runs first
-                    // to compile SASS files into CSS.
-                    // By default we support SASS Modules with the
-                    // extensions .module.scss or .module.sass
+                    // Opt-in support for LESS. The logic here is somewhat similar
+                    // as in the CSS routine, except that "less-loader" runs first
+                    // to compile LESS files into CSS.
                     {
-                        test: sassRegex,
-                        exclude: sassModuleRegex,
+                        test: lessRegex,
                         loader: getStyleLoaders(
                             {
                                 importLoaders: 2,
                                 sourceMap: shouldUseSourceMap,
                             },
-                            'sass-loader'
+                            'less-loader'
                         ),
                         // Don't consider CSS imports dead code even if the
                         // containing package claims to have no side effects.
                         // Remove this when webpack adds a warning or an error for this.
                         // See https://github.com/webpack/webpack/issues/6571
                         sideEffects: true,
-                    },
-                    // Adds support for CSS Modules, but using SASS
-                    // using the extension .module.scss or .module.sass
-                    {
-                        test: sassModuleRegex,
-                        loader: getStyleLoaders(
-                            {
-                                importLoaders: 2,
-                                sourceMap: shouldUseSourceMap,
-                                modules: true,
-                                getLocalIdent: getCSSModuleLocalIdent,
-                            },
-                            'sass-loader'
-                        ),
                     },
                     // "file" loader makes sure assets end up in the `build` folder.
                     // When you `import` an asset, you get its filename.

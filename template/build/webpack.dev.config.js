@@ -22,9 +22,7 @@ const publicPath = './'
 // style files regexes
 const cssRegex = /\.css$/
 const cssModuleRegex = /\.module\.css$/
-const sassRegex = [/\.sass$/, /\.scss$/]
-// 为了兼容旧代码，将.scss文件也当做模块化的样式了，其实不建议用.scss文件来做模块化，这样想直接写非模块化的.scss就比较麻烦了，需要用上面定义的.normal.scss作为后缀
-const sassModuleRegex = [/\.(module\.(scss|sass))$/]
+const lessRegex = [/\.less/]
 
 // common function to get style loaders
 const getStyleLoaders = (cssOptions, preProcessor) => {
@@ -100,7 +98,7 @@ module.exports = {
             join('/node_modules'),
         ],
         // webpack4里，如果js文件以.mjs为后缀，wepack就不用再去判断这个文件是es6 module还是commonjs模块了，速度会快一些
-        extensions: ['.js', '.jsx', '.mjs', '.sass', '.scss', '.css', '.ejs'],
+        extensions: ['.js', '.jsx', '.mjs', '.less', '.css', '.ejs'],
         // 虽然定义了这些路径别名，但是并不建议使用，虽然书写时是方便了一些，但是阅读代码的时候会无法跳转到对应的定义处
         alias: {
             '@': join('/src'),
@@ -245,30 +243,13 @@ module.exports = {
                             getLocalIdent: getCSSModuleLocalIdent,
                         }),
                     },
-                    // Opt-in support for SASS (using .scss or .sass extensions).
-                    // Chains the sass-loader with the css-loader and the style-loader
+                    // Opt-in support for LESS (using .less extension).
+                    // Chains the less-loader with the css-loader and the style-loader
                     // to immediately apply all styles to the DOM.
-                    // By default we support SASS Modules with the
-                    // extensions .module.scss or .module.sass
                     {
-                        test: sassRegex,
-                        exclude: sassModuleRegex,
+                        test: lessRegex,
                         include: join('/src'),
-                        use: getStyleLoaders({ importLoaders: 2 }, 'sass-loader'),
-                    },
-                    // Adds support for CSS Modules, but using SASS
-                    // using the extension .module.scss or .module.sass
-                    {
-                        test: sassModuleRegex,
-                        include: join('/src'),
-                        use: getStyleLoaders(
-                            {
-                                importLoaders: 2,
-                                modules: true,
-                                getLocalIdent: getCSSModuleLocalIdent,
-                            },
-                            'sass-loader'
-                        ),
+                        use: getStyleLoaders({ importLoaders: 2 }, 'less-loader'),
                     },
                     // {
                     //     test: require.resolve('zepto'),
