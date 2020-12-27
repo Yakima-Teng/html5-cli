@@ -7,21 +7,6 @@ import {
     promiseAlert,
 } from '../../../scripts/utils'
 
-const codeNotes = {
-    red: [
-        '红码：',
-        '不能随意通行。',
-    ].join('<br />'),
-    yellow: [
-        '黄码：',
-        '请留意自身状况。',
-    ].join('<br />'),
-    green: [
-        '绿码：',
-        '可正常通行。',
-    ].join('<br />'),
-}
-
 class Page extends Component {
     static propTypes = {
         history: PropTypes.object.isRequired,
@@ -64,7 +49,6 @@ class Page extends Component {
     }
 
     render () {
-        const state = this.state
         return (
             <div className="pageCodeIndex">
                 <article className="cardContent">
@@ -80,7 +64,9 @@ class Page extends Component {
                             }}
                             ref={(elem) => (this.elemQrCode = elem)} className="qrCode" />
                     </div>
-                    <div className="note" dangerouslySetInnerHTML={{ __html: codeNotes[state.statusColor] }} />
+                    <div className="note">
+                        红码：<br />不能随意通行。
+                    </div>
                 </article>
             </div>
         )
