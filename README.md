@@ -86,6 +86,8 @@ npm install
 npm i --registry=https://registry.npm.taobao.org
 ```
 
+说明：项目模板中提供了一个.npmrc文件，其中已经将registry设置为淘宝镜像，并且设置了sass_binnary_site（默认模板中没用到sass，预留给打算装sass来写项目的同学）。
+
 ### 本地开发
 
 进入到`<project-name>`模板项目根目录，通过下面的命令进行本地开发（渲染模版文件时，可以直接读取到`src/site.data.config.js`文件中的配置内容）：
