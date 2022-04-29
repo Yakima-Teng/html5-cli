@@ -18,7 +18,7 @@
         "package-lock.json"
     ],
     "dependencies": {
-        "async": "2.6.2",
+        "async": "2.6.4",
         "chalk": "2.4.2",
         "commander": "2.19.0",
         "consolidate": "0.15.1",
