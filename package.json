@@ -1,65 +1,70 @@
 {
-    "name": "html5-cli",
-    "version": "1.0.4",
-    "description": "快速创建针对移动端的初始模板，方便快速开发，适用于移动端日常专题、活动页等的开发。项目文档中还集成了移动端项目开发常见注意事项（持续更新中，欢迎提PR）。",
-    "main": "README.md",
-    "bin": {
-        "html5": "bin/html5",
-        "html5-init": "bin/html5-init",
-        "h5": "bin/html5",
-        "h5-init": "bin/html5-init"
-    },
-    "files": [
-        "bin",
-        "lib",
-        "LICENSE",
-        "README.md",
-        "package.json",
-        "package-lock.json"
-    ],
-    "dependencies": {
-        "async": "2.6.2",
-        "chalk": "2.4.2",
-        "commander": "2.19.0",
-        "consolidate": "0.15.1",
-        "download-git-repo": "1.1.0",
-        "fs-extra": "7.0.1",
-        "handlebars": "4.3.0",
-        "inquirer": "6.2.2",
-        "metalsmith": "2.3.0",
-        "minimatch": "3.0.4",
-        "multimatch": "3.0.0",
-        "ora": "3.1.0",
-        "read-metadata": "1.0.0",
-        "request": "2.88.0",
-        "semver": "5.6.0",
-        "user-home": "2.0.0",
-        "util": "0.11.1",
-        "validate-npm-package-name": "3.0.0"
-    },
-    "devDependencies": {},
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "debugger-h5": "node $NODE_DEBUG_OPTION ./bin/html5",
-        "debugger-h5-init": "node $NODE_DEBUG_OPTION ./bin/html5-init"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/Yakima-Teng/html5-cli.git"
-    },
-    "keywords": [
-        "html5-cli",
-        "html5",
-        "h5-cli",
-        "h5"
-    ],
-    "author": "Yakima (yakima.public@gmail.com)",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/Yakima-Teng/html5-cli/issues"
-    },
-    "homepage": "https://github.com/Yakima-Teng/html5-cli#readme",
-    "engines": {
-        "node": "> 8"
-    }
+  "name": "html5-cli",
+  "version": "1.0.4",
+  "description": "快速创建针对移动端的初始模板，方便快速开发，适用于移动端wap项目。",
+  "main": "README.md",
+  "bin": {
+    "html5": "bin/html5",
+    "html5-init": "bin/html5-init",
+    "h5": "bin/html5",
+    "h5-init": "bin/html5-init"
+  },
+  "files": [
+    "bin",
+    "lib",
+    "LICENSE",
+    "README.md",
+    "package.json",
+    "package-lock.json"
+  ],
+  "dependencies": {
+    "async": "2.6.2",
+    "chalk": "2.4.2",
+    "commander": "2.19.0",
+    "consolidate": "0.15.1",
+    "download-git-repo": "1.1.0",
+    "fs-extra": "7.0.1",
+    "handlebars": "4.3.0",
+    "inquirer": "6.2.2",
+    "metalsmith": "2.3.0",
+    "minimatch": "3.0.4",
+    "multimatch": "3.0.0",
+    "ora": "3.1.0",
+    "read-metadata": "1.0.0",
+    "request": "2.88.0",
+    "semver": "5.6.0",
+    "user-home": "2.0.0",
+    "util": "0.11.1",
+    "validate-npm-package-name": "3.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "debugger-h5": "node $NODE_DEBUG_OPTION ./bin/html5",
+    "debugger-h5-init": "node $NODE_DEBUG_OPTION ./bin/html5-init",
+    "template:ready": "cd template && npm run ready",
+    "template:dev": "cd template && npm run dev",
+    "template:lint": "cd template && npm run lint",
+    "template:lint:fix": "cd template && npm run lint:fix",
+    "template:build": "cd template && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yakima-Teng/html5-cli.git"
+  },
+  "keywords": [
+    "html5-cli",
+    "html5",
+    "h5-cli",
+    "h5"
+  ],
+  "author": "Yakima (yakima.public@gmail.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Yakima-Teng/html5-cli/issues"
+  },
+  "homepage": "https://github.com/Yakima-Teng/html5-cli#readme",
+  "engines": {
+    "node": "> 8"
+  }
 }
