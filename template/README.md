@@ -1,5 +1,3 @@
-
-
 <div align="center">
 	<img src="src/assets/logo_melomini.png" alt="logo_melomini" style="width:20%;" />
 </div>
@@ -269,9 +267,9 @@ feat(layout): 布局完成
 
 ## 鸣谢
 
- [vue-element-admin](https://github.com/PanJiaChen/vue-element-admin) 
+ [vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)
 
- [vant-demo](https://github.com/youzan/vant-demo) 
+ [vant-demo](https://github.com/youzan/vant-demo)
 
  [vue-pure-admin](https://github.com/xiaoxian521/vue-pure-admin)
 
