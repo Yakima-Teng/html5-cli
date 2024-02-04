@@ -127,6 +127,10 @@ npm deploy
 
 📚 [贡献代码](./docs/contribution.md)
 
+## 致谢
+
+模版基于[vue3-h5-template](https://github.com/yulimchen/vue3-h5-template)。
+
 ## License
 
 本项目采用[MIT协议](./LICENSE)。
