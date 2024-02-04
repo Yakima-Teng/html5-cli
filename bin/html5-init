@@ -18,8 +18,8 @@ const log = console.log
 program.on('--help', () => {
     log('  Examples:')
     log()
-    log(chalk.gray('    # 用官方模板快速创建一个react构建的H5项目'))
-    log('    执行命令`html5 init 项目名`或`h5 init 项目名`来创建你的项目吧（项目名需要以英文或者数字开头，后面可以带中文）')
+    log(chalk.gray('    # Generate an html5 project for mobile devices'))
+    log('    Use `html5 init [project-name]` or `h5 init [project-name]` to create your own wap app')
     log()
 })
 
@@ -36,22 +36,21 @@ help()
 
 
 log()
-process.on('exit', () => {
-    log()
+process.on('exit', (code) => {
+    log(`exited with code ${code}`)
 })
 
 run()
 
 function run () {
     checkVersion(() => {
-        const officialTemplate = 'Yakima-Teng/html5-cli'
+        const officialTemplate = 'Yakima-Teng/html5-cli#master'
         downloadAndGenerate(officialTemplate)
     })
 }
 
 const templatePath = path.join(home, '.html5-templates/html5-cli')
 const projectName = program.args[0]
-const clone = program.clone || false
 const to = path.resolve(projectName || '.')
 
 function downloadAndGenerate (template) {
@@ -59,7 +58,7 @@ function downloadAndGenerate (template) {
     spinner.start()
     // 先清空，避免出现git仓库模板文件中删除了的文件，因为本地缓存的此前版本中还存在，而导致创建的新项目模板文件中仍旧存在的问题
     fs.removeSync(templatePath)
-    download(template, templatePath, { clone }, err => {
+    download(template, templatePath, { clone: false }, err => {
         spinner.stop()
         err && logger.fatal('Failed to download repo ' + template + ': ' + err.message.trim())
         generate(projectName, templatePath, to, err => {

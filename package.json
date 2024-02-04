@@ -1,7 +1,7 @@
 {
   "name": "html5-cli",
   "version": "1.0.4",
-  "description": "快速创建针对移动端的初始模板，方便快速开发，适用于移动端wap项目。",
+  "description": "generate an html5 project for mobile devices",
   "main": "README.md",
   "bin": {
     "html5": "bin/html5",
@@ -39,9 +39,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "debugger-h5": "node $NODE_DEBUG_OPTION ./bin/html5",
-    "debugger-h5-init": "node $NODE_DEBUG_OPTION ./bin/html5-init",
+    "debugger-h5": "node ./bin/html5 init temp",
+    "debugger-h5-init": "node ./bin/html5-init temp",
     "template:ready": "cd template && npm run ready",
     "template:dev": "cd template && npm run dev",
     "template:lint": "cd template && npm run lint",
