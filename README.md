@@ -56,13 +56,6 @@ npm install -g html5-cli
 h5 init <project-name>
 ```
 
-
-## 反馈意见、贡献代码
-
-📚 [反馈意见](./docs/feedback.md)
-
-📚 [贡献代码](./docs/contribution.md)
-
 ## 致谢
 
 模版基于[vue3-h5-template](https://github.com/yulimchen/vue3-h5-template)。

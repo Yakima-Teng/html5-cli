@@ -4,67 +4,57 @@ const download = require('download-git-repo')
 const program = require('commander')
 const path = require('path')
 const ora = require('ora')
-const home = require('user-home')
 const chalk = require('chalk')
 const fs = require('fs-extra')
 const logger = require('../lib/logger')
-const generate = require('../lib/generate')
-const checkVersion = require('../lib/check-version')
 const log = console.log
 
 /**
  * help
  */
 program.on('--help', () => {
-    log('  Examples:')
-    log()
-    log(chalk.gray('    # Generate an html5 project for mobile devices'))
-    log('    Use `html5 init [project-name]` or `h5 init [project-name]` to create your own wap app')
-    log()
+  log('  Examples:')
+  log()
+  log(chalk.gray('    # Generate an html5 project for mobile devices'))
+  log('    Use `html5 init [project-name]` or `h5 init [project-name]` to create your own wap app')
+  log()
 })
 
 /**
  * help
  */
 function help () {
-    program.parse(process.argv)
-    if (program.args.length < 1) {
-        return program.help() // 会执行program.on('--help', cb)里定义的cb
-    }
+  program.parse(process.argv)
+  if (program.args.length < 1) {
+    return program.help() // 会执行program.on('--help', cb)里定义的cb
+  }
 }
 help()
 
 
 log()
 process.on('exit', (code) => {
-    log(`exited with code ${code}`)
+  log(`exited with code ${code}`)
 })
 
-run()
-
-function run () {
-    checkVersion(() => {
-        const officialTemplate = 'Yakima-Teng/html5-cli#master'
-        downloadAndGenerate(officialTemplate)
-    })
-}
-
-const templatePath = path.join(home, '.html5-templates/html5-cli')
 const projectName = program.args[0]
-const to = path.resolve(projectName || '.')
+const templatePath = path.resolve(process.cwd(), projectName || '.')
 
 function downloadAndGenerate (template) {
-    const spinner = ora('downloading template')
-    spinner.start()
-    // 先清空，避免出现git仓库模板文件中删除了的文件，因为本地缓存的此前版本中还存在，而导致创建的新项目模板文件中仍旧存在的问题
-    fs.removeSync(templatePath)
-    download(template, templatePath, { clone: false }, err => {
-        spinner.stop()
-        err && logger.fatal('Failed to download repo ' + template + ': ' + err.message.trim())
-        generate(projectName, templatePath, to, err => {
-            err && logger.fatal(err)
-            log()
-            logger.success('Generated "%s"', projectName)
-        })
-    })
+  const spinner = ora('downloading template')
+  spinner.start()
+  // 先清空，避免出现git仓库模板文件中删除了的文件，因为本地缓存的此前版本中还存在，而导致创建的新项目模板文件中仍旧存在的问题
+  fs.removeSync(templatePath)
+  download(template, templatePath, { clone: false }, err => {
+    spinner.stop()
+
+    if (err) {
+      logger.fatal('Failed to download repo ' + template + ': ' + err.message.trim())
+      return
+    }
+    log()
+    logger.success('Generated html5 project "%s"', projectName)
+  })
 }
+
+downloadAndGenerate('Yakima-Teng/html5-cli#master')
