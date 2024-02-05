@@ -1,5 +1,5 @@
 <div align="center">
-	<img src="src/assets/logo_melomini.png" alt="logo_melomini" style="width:20%;" />
+	<img src="src/assets/logo.svg" alt="logo" style="width:20%;" />
 </div>
 
 <div align="center">

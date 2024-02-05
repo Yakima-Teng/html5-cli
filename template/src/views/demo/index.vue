@@ -25,16 +25,16 @@ const contentList = reactive([
     <img
       class="block w-[120px] mx-auto mb-[20px] pt-[30px]"
       alt="Vue logo"
-      src="~@/assets/logo_melomini.png"
+      src="~@/assets/logo.svg"
     />
     <div class="pl-[12px] border-l-[3px] border-[color:#41b883]">
       <a
         class="flex items-center"
-        href="https://github.com/yulimchen/vue3-h5-template"
+        href="https://github.com/Yakima-Teng/html5-cli"
         target="_blank"
       >
         <svg-icon class="text-[20px] mr-[8px]" name="github" />
-        <h3 class="font-bold text-[18px] my-[4px]">Vue3-h5-template</h3>
+        <h3 class="font-bold text-[18px] my-[4px]">html5-template (Vue3)</h3>
         <svg-icon class="text-[12px] ml-[5px]" name="link" />
       </a>
     </div>

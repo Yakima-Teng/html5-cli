@@ -25,7 +25,8 @@
     "template:dev": "cd template && npm run dev",
     "template:lint": "cd template && npm run lint",
     "template:lint:fix": "cd template && npm run lint:fix",
-    "template:build": "cd template && npm run build"
+    "template:build": "cd template && npm run build",
+    "release": "bash bash/release.sh"
   },
   "repository": {
     "type": "git",
