@@ -36,7 +36,11 @@
     "html5-cli",
     "html5",
     "h5-cli",
-    "h5"
+    "h5",
+    "vue3",
+    "typescript",
+    "pinia",
+    "boilerplate"
   ],
   "author": "Yakima (yakima.public@gmail.com)",
   "license": "MIT",
