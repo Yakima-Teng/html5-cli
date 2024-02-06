@@ -1,5 +1,7 @@
 # html5-cli
 
+[中文文档](./README_zh-CN.md)
+
 <div align="center">
 	<img src="./attachments/logo.png" style="width:128px;" />
 </div>
@@ -16,50 +18,52 @@
   </a>
 </p>
 
-> 快速创建针对移动端的初始模板，方便项目快速启动。
+> Quickly generate an HTML boilerplate for mobile devices, using Vue3, TypeScript and Pinia.
 
-默认的模板项目特性如下：
+## How to use
 
-- [x] ⚡ Vue3 + Vite4
-- [x] 🍕 TypeScript
-- [x] ✨ Vant4 组件库
-- [x] 🌀 Tailwindcss 原子类框架
-- [x] 🍍 Pinia 状态管理
-- [x] 🌓 支持深色模式
-- [x] Vue-router 4
-- [x] 支持 SVG 图标自动注册组件
-- [x] vw 视口适配
-- [x] Axios 封装
-- [x] 打包资源 gzip 压缩
-- [x] 开发环境支持 Mock 数据
-- [x] ESLint
-- [x] 首屏加载动画
-- [x] 开发环境调试面板
-- [x] 生产环境 CDN 依赖
+### install
 
-## 使用
-
-### 第一次使用前的准备
-
-***第一次使用前***，需要先全局安装`html5-cli`（后面再创建项目时不需要再执行这个命令了）：
+***before first use***, install `html5-cli` globally (only once):
 
 ```bash
-npm install -g html5-cli
+npm i -g html5-cli
 ```
 
-然后，你就可以在你的终端中使用`html5`，或者使用别名`h5`了。
+Then you can use `h5` or `html5` command in your terminal to create a new project.
 
-### 创建项目
+### Create a new project
 
 ```bash
-# 将<project-name>替换成实际项目名（这里`h5`也可以换成`html5`，作用相同，看你喜欢用哪个命令）
+# replace <project-name> with actually project name (you can also use `html5` in place of `h5`, there two commands are the same)
 h5 init <project-name>
 ```
 
-## 致谢
+## Features
 
-模版基于[vue3-h5-template](https://github.com/yulimchen/vue3-h5-template)。
+The boilerplate is out of the box with the following features:
+
+- [x] Vue3 + Vite4
+- [x] TypeScript
+- [x] Vant4 UI Library
+- [x] Tailwindcss: utility-first CSS framework
+- [x] Use Pinia for state management
+- [x] Support dark theme mode
+- [x] Vue-router 4
+- [x] Support automatically register components for SVG icons
+- [x] adaptive for vw viewport design
+- [x] make request with Axios
+- [x] support gzip compression
+- [x] support mocking data for development environment
+- [x] ESLint
+- [x] First screen loading animation
+- [x] Debug in development environment with [Eruda](https://github.com/liriliri/eruda)
+- [x] Support take advantage of CDN in production environment
+
+## Thanks
+
+- [vue3-h5-template](https://github.com/yulimchen/vue3-h5-template).
 
 ## License
 
-本项目采用[MIT协议](./LICENSE)。
+Licensed under the [MIT license](./LICENSE).
