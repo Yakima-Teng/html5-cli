@@ -5,9 +5,7 @@
   "main": "README.md",
   "bin": {
     "html5": "bin/html5",
-    "html5-init": "bin/html5-init",
-    "h5": "bin/html5",
-    "h5-init": "bin/html5-init"
+    "h5": "bin/html5"
   },
   "files": [
     "bin",
@@ -20,12 +18,13 @@
   "scripts": {
     "ready": "npm install",
     "debugger-h5": "node ./bin/html5 init temp",
-    "debugger-h5-init": "node ./bin/html5-init temp",
-    "template:ready": "cd template && npm run ready",
-    "template:dev": "cd template && npm run dev",
-    "template:lint": "cd template && npm run lint",
-    "template:lint:fix": "cd template && npm run lint:fix",
-    "template:build": "cd template && npm run build",
+    "template:vue3:ready": "cd templates/vue3 && npm run ready",
+    "template:vue3:dev": "cd templates/vue3 && npm run dev",
+    "template:vue3:lint": "cd templates/vue3 && npm run lint",
+    "template:vue3:lint:fix": "cd templates/vue3 && npm run lint:fix",
+    "template:vue3:build": "cd templates/vue3 && npm run build",
+    "template:vue3:test": "node ./bin/html5-init temp",
+    "template:classic:test": "cd temp && node ../bin/classic -p 8080 -t remote",
     "release": "bash bash/release.sh"
   },
   "repository": {
@@ -39,6 +38,7 @@
     "h5",
     "vue3",
     "typescript",
+    "Vanilla JS",
     "pinia",
     "boilerplate"
   ],
@@ -51,8 +51,10 @@
   "dependencies": {
     "chalk": "2.4.2",
     "commander": "2.19.0",
-    "download-git-repo": "1.1.0",
     "fs-extra": "7.0.1",
+    "giget": "1.1.3",
+    "gulp": "4.0.2",
+    "gulp-connect": "5.7.0",
     "ora": "3.1.0",
     "util": "0.11.1"
   },

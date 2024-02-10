@@ -1,8 +1,110 @@
 #!/usr/bin/env node
+const process = require('process')
+const path = require('path')
 
-const commander = require('commander')
+const program = require('commander')
+const ora = require('ora')
+const fs = require('fs-extra')
+const chalk = require('chalk')
+const { downloadTemplate } = require('giget')
 
-commander.version(require('../package.json').version)
-  .usage('<command> [options]')
-  .command('init [project-name]', 'generate an html5 project for mobile devices')
-  .parse(process.argv)
+const gulp = require('gulp')
+// const cleanCSS = require('gulp-clean-css')
+// const gulpIf = require('gulp-if')
+// const uglify = require('gulp-uglify')
+const connect = require('gulp-connect')
+// const prettier = require('gulp-prettier')
+// const eslint = require('gulp-eslint')
+
+const pkg = require('../package.json')
+
+/**
+ * util functions
+ */
+// eslint-disable-next-line no-console
+const log = console.log
+const downloadTemplateToSpecifiedPath = ({ template, savePath }) => new Promise((resolve, reject) => {
+  const spinner = ora('downloading template')
+  spinner.start()
+  // 先清空，避免出现git仓库模板文件中删除了的文件，因为本地缓存的此前版本中还存在，而导致创建的新项目模板文件中仍旧存在的问题
+  fs.removeSync(savePath)
+  downloadTemplate(template, {
+    dir: savePath,
+    provider: 'github',
+  })
+    .then(() => {
+      spinner.stop()
+      log(chalk.green(`template ${template} is successfully downloaded to ${savePath}`))
+      resolve(null)
+    })
+    .catch((err) => {
+      spinner.stop()
+      logger.fatal(`Failed to download template ${template} to ${savePath}: ${err.message.trim()}`)
+      reject(err.message.trim())
+    })
+})
+
+program.version(pkg.version)
+program.usage('<command>')
+
+program
+  .command('init <project-name>')
+  .usage('<project-name> [options]')
+  .description('create a web project for mobile devices, directly using Vanilla JS, or using Vue3 + TypeScript + Pinia')
+  .option('-t, --template <template-name>', 'specify the template to use, available template names are `classic` (default) and `vue3`')
+  .on('--help', function() {
+    log('');
+    log('Examples:');
+    log('');
+    log('  $ html5 init <project-name>');
+    log('  $ h5 init --template=vue3 <project-name>');
+  })
+  .action(function(projectName, options){
+    const template = options.template || 'classic'
+    const savePath = path.resolve(process.cwd(), projectName || '.')
+    const availableTemplateNames = ['classic', 'vue3']
+    if (availableTemplateNames.includes(template)) {
+      downloadTemplateToSpecifiedPath({
+        template: `github:Yakima-Teng/html5-cli/templates/${template}#master`,
+        savePath,
+      }).catch(log)
+      return
+    }
+    log(chalk.red(`The template name '${template}' is not available, available names are ${availableTemplateNames.join('、')}.`))
+  })
+
+program
+  .command('build <project-name>')
+  .usage('<project-name> [options]')
+  .description('develop a web project using Vanilla JS with live reload out of the box')
+  .option('-p, --port <template-name>', 'specify the server port to be used, default is 8080')
+  .on('--help', function() {
+    log('');
+    log('Examples:');
+    log('');
+    log('  $ html5 build <project-name>');
+    log('  $ h5 build <project-name> --port 8081');
+  })
+  .action(function(projectName, options){
+    // 当前工作目录（用户在命令行执行`classic`命令时所在的目录）
+    const cwd = process.cwd()
+    const port = parseInt(options.port || '8080', 10)
+    connect.server({
+      name: '',
+      root: [cwd],
+      port,
+      livereload: true,
+    })
+
+    const cssWatcher = gulp.watch([path.join(cwd, '**/*.css'), '!' + path.join(cwd, '**/*.min.css')])
+    const jsWatcher = gulp.watch([path.join(cwd, '**/*.js'), '!' + path.join(cwd, '**/*.min.js')])
+    const htmlWatcher = gulp.watch([path.join(cwd, '**/*.html')], (a, b, c) => {
+      console.log(a, b, c)
+    })
+  })
+
+program.parse(process.argv);
+
+process.on('exit', (code) => {
+  log(`exited with code ${code}`)
+})
