@@ -18,13 +18,11 @@
   </a>
 </p>
 
-> Quickly generate an HTML boilerplate for mobile devices, using Vue3, TypeScript and Pinia.
+> Quickly create an HTML project for mobile devices, and develop with live reload.
 
-## How to use
+## Install
 
-### install
-
-***before first use***, install `html5-cli` globally (only once):
+***before first use***, install `html5-cli` globally (only need once):
 
 ```bash
 npm i -g html5-cli
@@ -32,16 +30,24 @@ npm i -g html5-cli
 
 Then you can use `h5` or `html5` command in your terminal to create a new project.
 
-### Create a new project
+## Create a new project
 
 ```bash
 # replace <project-name> with actually project name (you can also use `html5` in place of `h5`, there two commands are the same)
 h5 init <project-name>
 ```
 
-## Features
+Then you will be prompted to choose a template you want to use. Currently, there are two templates.
 
-The boilerplate is out of the box with the following features:
+### classic template
+
+This template is raw enough with only some raw html, css and js files. No building tools like webpack or vite is used.
+
+If you want to develop with live reload, you can use the `html5 build` command which is described later.
+
+### vue3 template
+
+This template is out of the box with the following features:
 
 - [x] Vue3 + Vite4
 - [x] TypeScript
@@ -59,6 +65,20 @@ The boilerplate is out of the box with the following features:
 - [x] First screen loading animation
 - [x] Debug in development environment with [Eruda](https://github.com/liriliri/eruda)
 - [x] Support take advantage of CDN in production environment
+
+## Develop with live reload
+
+If you are using the `classic` template, or any other HTML projects without building tools like webpack or vite, you can use `html5-cli` to provide the live reload ability, making developing a pleasure.
+
+```bash
+# enter project and then execute the command below, default server port is 8080
+html5 build
+
+# or you can specify the port
+html5 build --port 8081
+```
+
+Changes to any files whose file name is not ending with `.min.js` or `.min.css` will trigger HTML files visited in browser to be refreshed automatically.
 
 ## Thanks
 

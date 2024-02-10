@@ -1,20 +1,16 @@
 #!/usr/bin/env node
+
 const process = require('process')
 const path = require('path')
 
 const program = require('commander')
+const inquirer = require('inquirer')
 const ora = require('ora')
 const fs = require('fs-extra')
 const chalk = require('chalk')
 const { downloadTemplate } = require('giget')
-
+const express = require('express')
 const gulp = require('gulp')
-// const cleanCSS = require('gulp-clean-css')
-// const gulpIf = require('gulp-if')
-// const uglify = require('gulp-uglify')
-const connect = require('gulp-connect')
-// const prettier = require('gulp-prettier')
-// const eslint = require('gulp-eslint')
 
 const pkg = require('../package.json')
 
@@ -60,22 +56,54 @@ program
     log('  $ h5 init --template=vue3 <project-name>');
   })
   .action(function(projectName, options){
-    const template = options.template || 'classic'
+    const template = options.template
     const savePath = path.resolve(process.cwd(), projectName || '.')
     const availableTemplateNames = ['classic', 'vue3']
-    if (availableTemplateNames.includes(template)) {
-      downloadTemplateToSpecifiedPath({
-        template: `github:Yakima-Teng/html5-cli/templates/${template}#master`,
-        savePath,
-      }).catch(log)
+    // 如果用户显示指定了模版，就直接使用对应模版
+    if (template) {
+      if (availableTemplateNames.includes(template)) {
+        downloadTemplateToSpecifiedPath({
+          template: `github:Yakima-Teng/html5-cli/templates/${template}#master`,
+          savePath,
+        }).catch(log)
+        return
+      }
+      log(chalk.red(`The template name '${template}' is not available, available names are ${availableTemplateNames.join('、')}.`))
       return
     }
-    log(chalk.red(`The template name '${template}' is not available, available names are ${availableTemplateNames.join('、')}.`))
+
+    // 如果用户没有显示指定模板，就在终端中让用户选择模版
+    inquirer
+      .prompt([
+        {
+          type: 'list',
+          name: 'template',
+          message: 'Which template do you want to use?',
+          choices: [
+            'classic: using Vanilla JS without building tools like Vite or Webpack',
+            'Vue3: using Vue3 + TypeScript + Pinia, with Vite as the building tool',
+          ],
+          filter(val) {
+            return val.split(':')[0].toLowerCase()
+          },
+        },
+      ])
+      .then((answers) => {
+        const template = answers.template
+        if (availableTemplateNames.includes(template)) {
+          downloadTemplateToSpecifiedPath({
+            template: `github:Yakima-Teng/html5-cli/templates/${template}#master`,
+            savePath,
+          }).catch(log)
+          return
+        }
+        log(chalk.red(`The template name '${template}' is not available, available names are ${availableTemplateNames.join('、')}.`))
+      });
   })
 
 program
-  .command('build <project-name>')
-  .usage('<project-name> [options]')
+  .command('build')
+  .usage('[options]')
   .description('develop a web project using Vanilla JS with live reload out of the box')
   .option('-p, --port <template-name>', 'specify the server port to be used, default is 8080')
   .on('--help', function() {
@@ -85,22 +113,74 @@ program
     log('  $ html5 build <project-name>');
     log('  $ h5 build <project-name> --port 8081');
   })
-  .action(function(projectName, options){
+  .action(function(options){
     // 当前工作目录（用户在命令行执行`classic`命令时所在的目录）
     const cwd = process.cwd()
     const port = parseInt(options.port || '8080', 10)
-    connect.server({
-      name: '',
-      root: [cwd],
-      port,
-      livereload: true,
+
+    const app = express()
+    const server = require('http').createServer(app);
+    const io = require('socket.io')(server);
+
+    io.on('connection', () => {
+      console.log('io connected')
     })
 
-    const cssWatcher = gulp.watch([path.join(cwd, '**/*.css'), '!' + path.join(cwd, '**/*.min.css')])
-    const jsWatcher = gulp.watch([path.join(cwd, '**/*.js'), '!' + path.join(cwd, '**/*.min.js')])
-    const htmlWatcher = gulp.watch([path.join(cwd, '**/*.html')], (a, b, c) => {
-      console.log(a, b, c)
+    const triggerRefresh = () => {
+      io.emit("refresh", "");
+    }
+
+    const clientCodeToInject = `
+      <script src="/socket.io/socket.io.min.js"></script>
+      <script>
+        const socket = window.io(location.origin, {
+          withCredentials: true,
+          extraHeaders: {}
+        });
+        socket.on("connect", () => {
+          console.log('websocket connected');
+        });
+        socket.on("refresh", () => {
+          location.reload()
+        });
+        socket.on("close", (reason) => {
+          console.log('websocket is closed due to: ', reason);
+        });
+      </script>
+    `
+
+    app.get(/.*\/$/, (req, res) => {
+      const filePath = path.join(cwd, req.path, 'index.html')
+      const fileContent = fs.readFileSync(filePath, { encoding: 'utf-8' })
+      res.writeHead(200, { 'Content-Type':'text/html'});
+      res.end(fileContent + clientCodeToInject)
     })
+
+    app.get(/.*\.html/, (req, res) => {
+      const filePath = path.join(cwd, req.path)
+      const fileContent = fs.readFileSync(filePath, { encoding: 'utf-8' })
+      res.writeHead(200, { 'Content-Type':'text/html'});
+      res.end(fileContent + clientCodeToInject)
+    })
+
+    app.use(express.static(cwd))
+
+    server.listen(port, () => {
+      log(chalk.green(`server listened to port ${port}`))
+    })
+
+    gulp.watch(
+      [
+        path.join(cwd, '**/*'),
+        '!' + path.join(cwd, '**/*.min.css'),
+        '!' + path.join(cwd, '**/*.min.js'),
+      ],
+      { delay: 300 },
+      (cb) => {
+        triggerRefresh()
+        cb()
+      }
+    )
   })
 
 program.parse(process.argv);
