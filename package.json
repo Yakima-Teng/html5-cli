@@ -1,6 +1,6 @@
 {
   "name": "html5-cli",
-  "version": "2.0.2",
+  "version": "3.0.0",
   "description": "quickly create an HTML project for mobile devices, and develop with pleasure.",
   "main": "README.md",
   "bin": {
