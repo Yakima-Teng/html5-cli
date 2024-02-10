@@ -18,7 +18,7 @@
   </a>
 </p>
 
-> Quickly create an HTML project for mobile devices, and develop with live reload.
+> Quickly create HTML projects for mobile devices, and develop with live reload.
 
 ## Install
 

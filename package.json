@@ -1,7 +1,7 @@
 {
   "name": "html5-cli",
   "version": "3.0.0",
-  "description": "quickly create an HTML project for mobile devices, and develop with pleasure.",
+  "description": "Quickly create HTML projects for mobile devices, and develop with live reload.",
   "main": "README.md",
   "bin": {
     "html5": "bin/html5",
@@ -40,7 +40,8 @@
     "typescript",
     "Vanilla JS",
     "pinia",
-    "boilerplate"
+    "boilerplate",
+    "live reload"
   ],
   "author": "Yakima (yakima.public@gmail.com)",
   "license": "MIT",
