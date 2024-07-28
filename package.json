@@ -1,0 +1,72 @@
+{
+  "name": "html5-cli",
+  "version": "3.0.0",
+  "description": "Quickly create HTML projects for mobile devices, and develop with live reload.",
+  "main": "README.md",
+  "bin": {
+    "html5": "bin/html5",
+    "h5": "bin/html5"
+  },
+  "files": [
+    "bin",
+    "attachments",
+    "LICENSE",
+    "README.md",
+    "package.json",
+    "package-lock.json"
+  ],
+  "scripts": {
+    "ready": "npm install",
+    "debugger-h5": "node ./bin/html5 init temp",
+    "template:vue3:ready": "cd templates/vue3 && npm run ready",
+    "template:vue3:dev": "cd templates/vue3 && npm run dev",
+    "template:vue3:lint": "cd templates/vue3 && npm run lint",
+    "template:vue3:lint:fix": "cd templates/vue3 && npm run lint:fix",
+    "template:vue3:build": "cd templates/vue3 && npm run build",
+    "template:vue3:test": "node ./bin/html5-init temp",
+    "template:classic:test": "cd temp && node ../bin/classic -p 8080 -t remote",
+    "deploy:qiniu": "node build/deploy.mjs",
+    "deploy:github": "bash bash/github-deploy.sh",
+    "deploy:npm": "npm --registry=https://registry.npmjs.org publish",
+    "deploy": "npm run deploy:qiniu && npm run deploy:github && npm run deploy:npm"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yakima-Teng/html5-cli.git"
+  },
+  "keywords": [
+    "html5-cli",
+    "html5",
+    "h5-cli",
+    "h5",
+    "vue3",
+    "typescript",
+    "Vanilla JS",
+    "pinia",
+    "boilerplate",
+    "live reload"
+  ],
+  "author": "Yakima (yakima.public@gmail.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Yakima-Teng/html5-cli/issues"
+  },
+  "homepage": "https://github.com/Yakima-Teng/html5-cli#readme",
+  "dependencies": {
+    "chalk": "2.4.2",
+    "commander": "2.19.0",
+    "express": "4.18.2",
+    "fs-extra": "7.0.1",
+    "giget": "1.1.3",
+    "gulp": "4.0.2",
+    "inquirer": "8.2.6",
+    "ora": "3.1.0",
+    "socket.io": "4.7.4"
+  },
+  "engines": {
+    "node": "> 8"
+  },
+  "devDependencies": {
+    "better-deploy": "0.0.15"
+  }
+}
