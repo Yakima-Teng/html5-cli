@@ -1,0 +1,7 @@
+node_modules/
+templates/
+temp/
+*.min.js
+*.min.css
+*.lock
+package-lock.json

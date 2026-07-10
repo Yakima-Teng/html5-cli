@@ -1,0 +1,12 @@
+{
+  "globs": ["**/*.md"],
+  "gitignore": true,
+  "ignores": ["templates/"],
+  "fix": true,
+  "config": {
+    "default": true,
+    "MD013": false,
+    "MD033": false,
+    "MD041": false
+  }
+}
