@@ -10,7 +10,7 @@ export default [
         ...globals.es2021,
       },
       ecmaVersion: 2021,
-      sourceType: "commonjs",
+      sourceType: "module",
     },
     rules: {
       "no-console": "off",

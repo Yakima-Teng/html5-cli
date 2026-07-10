@@ -1,7 +1,7 @@
 # html5-cli
 
 <div align="center">
-	<img src="./attachments/logo.png" style="width:128px;" />
+ <img src="./attachments/logo.png" style="width:128px;" alt="html5-cli logo" />
 </div>
 
 <p align="center" style="margin-top:15px;">
