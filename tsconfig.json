@@ -14,7 +14,8 @@
   },
   "include": [
     "bin/**/*",
-    "scripts/**/*.ts"
+    "scripts/**/*.ts",
+    "test/**/*"
   ],
   "exclude": [
     "templates",

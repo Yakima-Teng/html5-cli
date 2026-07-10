@@ -1,6 +1,7 @@
-const assert = require("assert");
-const path = require("path");
-const fs = require("fs");
+const assert = require("node:assert");
+const path = require("node:path");
+const fs = require("node:fs");
+const { describe, it } = require("node:test");
 
 describe("html5-cli smoke test", () => {
   it("should have bin/html5 entry file", () => {

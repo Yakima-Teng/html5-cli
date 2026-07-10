@@ -3,6 +3,7 @@
   "version": "3.0.0",
   "description": "Quickly create HTML projects for mobile devices, and develop with live reload.",
   "main": "README.md",
+  "type": "module",
   "bin": {
     "html5": "bin/html5",
     "h5": "bin/html5"
@@ -36,7 +37,7 @@
     "lint:code": "eslint . --fix",
     "lint:markdown": "markdownlint-cli2",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "test": "node --test test/**/*.test.js"
+    "test": "node --test test/**/*.test.ts"
   },
   "repository": {
     "type": "git",
@@ -63,11 +64,12 @@
   "dependencies": {
     "chalk": "2.4.2",
     "commander": "2.19.0",
-    "express": "4.18.2",
+    "express": "4.22.2",
     "fs-extra": "7.0.1",
     "giget": "1.1.3",
     "gulp": "4.0.2",
     "inquirer": "8.2.6",
+    "nsuite": "0.2.5",
     "ora": "3.1.0",
     "socket.io": "4.7.4"
   },
@@ -76,6 +78,7 @@
   },
   "devDependencies": {
     "@eslint/js": "9.17.0",
+    "@types/node": "26.1.1",
     "eslint": "9.17.0",
     "globals": "15.14.0",
     "markdownlint-cli2": "0.17.2",
