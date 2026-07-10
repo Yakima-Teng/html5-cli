@@ -20,7 +20,7 @@
 
 ## Install
 
-***before first use***, install `html5-cli` globally (only need once):
+**_before first use_**, install `html5-cli` globally (only need once):
 
 ```bash
 npm i -g html5-cli

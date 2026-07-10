@@ -20,10 +20,6 @@ export default [
     },
   },
   {
-    ignores: [
-      "templates/",
-      "node_modules/",
-      "temp/",
-    ],
+    ignores: ["templates/", "node_modules/", "temp/"],
   },
 ];
