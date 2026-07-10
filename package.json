@@ -64,7 +64,7 @@
     "socket.io": "4.7.4"
   },
   "engines": {
-    "node": "> 8"
+    "node": ">= 22.18.0"
   },
   "devDependencies": {
     "better-deploy": "0.0.15"
