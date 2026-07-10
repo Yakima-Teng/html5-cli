@@ -1,7 +1,5 @@
 # html5-cli
 
-[中文文档](./README_zh-CN.md)
-
 <div align="center">
 	<img src="./attachments/logo.png" style="width:128px;" />
 </div>
