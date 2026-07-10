@@ -25,10 +25,12 @@
     "template:vue3:build": "cd templates/vue3 && npm run build",
     "template:vue3:test": "node ./bin/html5-init temp",
     "template:classic:test": "cd temp && node ../bin/classic -p 8080 -t remote",
-    "deploy:qiniu": "node build/deploy.mjs",
-    "deploy:github": "bash bash/github-deploy.sh",
-    "deploy:npm": "npm --registry=https://registry.npmjs.org publish",
-    "deploy": "npm run deploy:qiniu && npm run deploy:github && npm run deploy:npm"
+    "release-major": "standard-version --release-as major",
+    "release-minor": "standard-version --release-as minor",
+    "release-patch": "standard-version --release-as patch",
+    "deploy:tags": "git push --follow-tags origin master",
+    "deploy:npm": "node ./scripts/deploy-npm.ts",
+    "deploy": "node --run deploy:tags && node --run deploy:npm"
   },
   "repository": {
     "type": "git",
@@ -67,6 +69,6 @@
     "node": ">= 22.18.0"
   },
   "devDependencies": {
-    "better-deploy": "0.0.15"
+    "standard-version": "9.5.0"
   }
 }
