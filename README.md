@@ -1,10 +1,6 @@
 # html5-cli
 
-<div align="center">
- <img src="./attachments/logo.png" style="width:128px;" alt="html5-cli logo" />
-</div>
-
-<p align="center" style="margin-top:15px;">
+<p align="center" style="display: flex;align-items: center;justify-content: center;gap:8px;">
   <a href="https://npmcharts.com/compare/html5-cli?minimal=true">
     <img src="https://img.shields.io/npm/dm/html5-cli.svg" alt="Downloads">
   </a>
@@ -18,9 +14,11 @@
 
 > Quickly create HTML projects for mobile devices, and develop with live reload.
 
+Note: This project is open-sourced on [Yakima-Teng/html5-cli](https://github.com/Yakima-Teng/html5-cli).
+
 ## Install
 
-**_before first use_**, install `html5-cli` globally (only need once):
+**_Before first use_**, install `html5-cli` globally (only need once):
 
 ```bash
 npm i -g html5-cli
@@ -47,22 +45,22 @@ If you want to develop with live reload, you can use the `html5 build` command w
 
 This template is out of the box with the following features:
 
-- [x] Vue3 + Vite4
-- [x] TypeScript
-- [x] Vant4 UI Library
-- [x] Tailwindcss: utility-first CSS framework
-- [x] Use Pinia for state management
-- [x] Support dark theme mode
-- [x] Vue-router 4
-- [x] Support automatically register components for SVG icons
-- [x] adaptive for vw viewport design
-- [x] make request with Axios
-- [x] support gzip compression
-- [x] support mocking data for development environment
-- [x] ESLint
-- [x] First screen loading animation
-- [x] Debug in development environment with [Eruda](https://github.com/liriliri/eruda)
-- [x] Support take advantage of CDN in production environment
+- Vue3 + Vite4
+- TypeScript
+- Vant4 UI Library
+- Tailwindcss: utility-first CSS framework
+- Use Pinia for state management
+- Support dark theme mode
+- Vue-router 4
+- Support automatically register components for SVG icons
+  adaptive for vw viewport design
+- make request with Axios
+- support gzip compression
+- support mocking data for development environment
+- ESLint
+- First screen loading animation
+- Debug in development environment with [Eruda](https://github.com/liriliri/eruda)
+- Support take advantage of CDN in production environment
 
 ## Develop with live reload
 
