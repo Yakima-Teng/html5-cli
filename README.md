@@ -82,4 +82,4 @@ Changes to any files whose file name is not ending with `.min.js` or `.min.css` 
 
 ## License
 
-Licensed under the [MIT license](./LICENSE).
+📄 [Apache License 2.0](https://github.com/Yakima-Teng/html5-cli/blob/master/LICENSE)
