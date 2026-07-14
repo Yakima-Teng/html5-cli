@@ -14,7 +14,7 @@
 
 > Quickly create HTML projects for mobile devices, and develop with live reload.
 
-Note: This project is open-sourced on [Yakima-Teng/html5-cli](https://github.com/Yakima-Teng/html5-cli).
+Note: This project is open-sourced on [https://github.com/Yakima-Teng/html5-cli](https://github.com/Yakima-Teng/html5-cli).
 
 ## Install
 
